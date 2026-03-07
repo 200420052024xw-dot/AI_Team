@@ -3,642 +3,255 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI DEV TEAM · PIXEL OFFICE</title>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet">
+<title>AI Dev Team · Live</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-/* ═══════════════════════════════════════════
-   PIXEL OFFICE — AI DEV TEAM LIVE DASHBOARD
-   ═══════════════════════════════════════════ */
 :root {
-  --bg:       #0d0d0d;
-  --bg2:      #111111;
-  --panel:    #161616;
-  --border:   #2a2a2a;
-  --border2:  #333333;
-  --pixel:    2px;
-
-  --pm:       #ffd700;
-  --arch:     #00e5ff;
-  --coder:    #69ff47;
-  --tester:   #ff6b35;
-  --reviewer: #da77ff;
-  --doc:      #ff77a9;
-  --system:   #666666;
-
-  --text:     #e8e8e8;
-  --dim:      #555555;
-  --scan:     rgba(0,229,255,0.03);
+  --cream:   #faf6f0;
+  --cream2:  #f4ede2;
+  --cream3:  #ede3d6;
+  --warm:    #e8ddd0;
+  --border:  #ddd3c4;
+  --border2: #cfc3b0;
+  --pm:       #c17f3a;
+  --arch:     #4a7fa5;
+  --coder:    #5a9465;
+  --tester:   #b85c38;
+  --reviewer: #7a5c9e;
+  --doc:      #9e5c7a;
+  --system:   #999080;
+  --text:    #3a3328;
+  --text2:   #6b6055;
+  --dim:     #a89880;
+  --radius:  12px;
+  --shadow:  0 2px 16px rgba(100,80,50,0.09);
 }
-
-* { margin:0; padding:0; box-sizing:border-box; }
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'VT323', monospace;
-  font-size: 18px;
-  min-height: 100vh;
-  overflow-x: hidden;
-  image-rendering: pixelated;
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Crect width='2' height='10' x='7' fill='%2300e5ff'/%3E%3Crect width='10' height='2' y='7' fill='%2300e5ff'/%3E%3C/svg%3E") 8 8, crosshair;
-}
-
-/* CRT scan lines */
-body::before {
-  content: '';
-  position: fixed; inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    var(--scan) 2px,
-    var(--scan) 4px
-  );
-  pointer-events: none;
-  z-index: 9999;
-}
-
-/* CRT glow vignette */
-body::after {
-  content: '';
-  position: fixed; inset: 0;
-  background: radial-gradient(ellipse at center,
-    transparent 60%,
-    rgba(0,0,0,0.6) 100%
-  );
-  pointer-events: none;
-  z-index: 9998;
-}
-
-/* ── PIXEL BORDER MIXIN ── */
-.px-box {
-  border: var(--pixel) solid var(--border2);
-  box-shadow:
-    inset -2px -2px 0 #000,
-    inset 2px 2px 0 rgba(255,255,255,0.05),
-    4px 4px 0 #000;
-}
-
-/* ── LAYOUT ── */
-.wrap {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 24px 20px 48px;
-  position: relative;
-  z-index: 1;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--cream);color:var(--text);font-family:'DM Mono',monospace;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+.wrap{max-width:1280px;margin:0 auto;padding:28px 24px 56px;position:relative;z-index:1;}
 
 /* ── HEADER ── */
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 20px;
-  margin-bottom: 20px;
-  background: var(--panel);
-  border: var(--pixel) solid var(--border2);
-  box-shadow: 4px 4px 0 #000;
-  position: relative;
-  overflow: hidden;
-}
-
-header::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg,
-    var(--pm), var(--arch), var(--coder),
-    var(--tester), var(--reviewer), var(--doc)
-  );
-  animation: rainbow 4s linear infinite;
-  background-size: 200% 100%;
-}
-
-@keyframes rainbow {
-  0%   { background-position: 0% 0%; }
-  100% { background-position: 200% 0%; }
-}
-
-.h-logo {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 11px;
-  color: var(--arch);
-  line-height: 1.8;
-  text-shadow: 2px 2px 0 #000, 0 0 20px rgba(0,229,255,0.5);
-  letter-spacing: 0.05em;
-}
-
-.h-logo span { color: var(--pm); }
-
-.h-right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.h-time {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
-  color: var(--dim);
-}
-
-.live-badge {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  background: #000;
-  border: var(--pixel) solid var(--coder);
-  box-shadow: 2px 2px 0 #000, 0 0 10px rgba(105,255,71,0.3);
-  font-family: 'Press Start 2P', monospace;
-  font-size: 8px;
-  color: var(--coder);
-  letter-spacing: 0.1em;
-}
-
-.blink-dot {
-  width: 8px; height: 8px;
-  background: var(--coder);
-  animation: blink-px 1s steps(1) infinite;
-  box-shadow: 0 0 6px var(--coder);
-}
-
-@keyframes blink-px { 0%,49%{opacity:1} 50%,100%{opacity:0} }
-
-/* ── AGENT GRID ── */
-.agents {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
-  margin-bottom: 14px;
-}
-
-.acard {
-  background: var(--panel);
-  border: var(--pixel) solid var(--border2);
-  box-shadow: 3px 3px 0 #000;
-  padding: 12px;
-  position: relative;
-  transition: box-shadow 0.1s;
-}
-
-.acard.is-active {
-  box-shadow: 3px 3px 0 #000, 0 0 16px rgba(255,255,255,0.08);
-}
-
-/* pixel character sprite */
-.sprite {
-  width: 32px; height: 32px;
-  margin: 0 auto 8px;
-  display: grid;
-  grid-template-columns: repeat(8, 4px);
-  grid-template-rows: repeat(8, 4px);
-}
-
-.sprite-pm     { --c1: var(--pm); }
-.sprite-arch   { --c1: var(--arch); }
-.sprite-coder  { --c1: var(--coder); }
-.sprite-tester { --c1: var(--tester); }
-.sprite-rev    { --c1: var(--reviewer); }
-.sprite-doc    { --c1: var(--doc); }
-
-.px { display: block; }
-.px.f { background: var(--c1); }
-.px.s { background: rgba(255,255,255,0.15); }
-.px.d { background: #000; }
-.px._ { background: transparent; }
-
-.agent-name {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 7px;
-  text-align: center;
-  margin-bottom: 6px;
-  letter-spacing: 0.05em;
-}
-
-.acard.pm       .agent-name { color: var(--pm); }
-.acard.architect .agent-name { color: var(--arch); }
-.acard.coder    .agent-name { color: var(--coder); }
-.acard.tester   .agent-name { color: var(--tester); }
-.acard.reviewer .agent-name { color: var(--reviewer); }
-.acard.documenter .agent-name { color: var(--doc); }
-
-.agent-role {
-  font-size: 13px;
-  color: var(--dim);
-  text-align: center;
-  margin-bottom: 8px;
-  line-height: 1.3;
-}
-
-.status-bar {
-  height: 6px;
-  background: #000;
-  border: 1px solid var(--border);
-  margin-bottom: 6px;
-  position: relative;
-  overflow: hidden;
-}
-
-.status-fill {
-  height: 100%;
-  width: 0%;
-  transition: width 0.3s steps(10);
-}
-
-.acard.pm        .status-fill { background: var(--pm); }
-.acard.architect .status-fill { background: var(--arch); }
-.acard.coder     .status-fill { background: var(--coder); }
-.acard.tester    .status-fill { background: var(--tester); }
-.acard.reviewer  .status-fill { background: var(--reviewer); }
-.acard.documenter .status-fill { background: var(--doc); }
-
-.acard.is-active .status-fill {
-  animation: loading 1.5s steps(10) infinite;
-}
-
-@keyframes loading {
-  0%   { width: 20%; }
-  50%  { width: 90%; }
-  100% { width: 20%; }
-}
-
-.agent-msg {
-  font-size: 13px;
-  color: var(--text);
-  line-height: 1.4;
-  min-height: 36px;
-  word-break: break-all;
-}
-
-.agent-cnt {
-  margin-top: 6px;
-  padding-top: 6px;
-  border-top: 1px solid var(--border);
-  font-family: 'Press Start 2P', monospace;
-  font-size: 7px;
-  color: var(--dim);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.agent-cnt .num {
-  font-size: 11px;
-}
-
-.acard.pm        .agent-cnt .num { color: var(--pm); }
-.acard.architect .agent-cnt .num { color: var(--arch); }
-.acard.coder     .agent-cnt .num { color: var(--coder); }
-.acard.tester    .agent-cnt .num { color: var(--tester); }
-.acard.reviewer  .agent-cnt .num { color: var(--reviewer); }
-.acard.documenter .agent-cnt .num { color: var(--doc); }
-
-/* ── MAIN CONTENT ── */
-.main-grid {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 12px;
-}
-
-/* ── CHAT PANEL ── */
-.chat-panel {
-  background: var(--panel);
-  border: var(--pixel) solid var(--border2);
-  box-shadow: 4px 4px 0 #000;
-  display: flex;
-  flex-direction: column;
-  height: 500px;
-}
-
-.panel-titlebar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 14px;
-  background: #000;
-  border-bottom: var(--pixel) solid var(--border2);
-  flex-shrink: 0;
-}
-
-.panel-titlebar-dots {
-  display: flex;
-  gap: 5px;
-}
-
-.dot-r { width:8px;height:8px;background:#ff5f57; }
-.dot-y { width:8px;height:8px;background:#febc2e; }
-.dot-g { width:8px;height:8px;background:#28c840; }
-
-.panel-label {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 7px;
-  color: var(--dim);
-  letter-spacing: 0.1em;
-}
-
-.panel-count {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 7px;
-  color: var(--arch);
-}
-
-.chat-scroll {
-  flex: 1;
-  overflow-y: auto;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.chat-scroll::-webkit-scrollbar { width: 6px; }
-.chat-scroll::-webkit-scrollbar-track { background: #000; }
-.chat-scroll::-webkit-scrollbar-thumb {
-  background: var(--border2);
-  border: none;
-}
-
-/* chat message */
-.chat-msg {
-  display: flex;
-  gap: 10px;
-  animation: msg-in 0.15s steps(3) forwards;
-}
-
-@keyframes msg-in {
-  0%   { opacity: 0; transform: translateY(4px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-.msg-avatar {
-  width: 28px; height: 28px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 7px;
-  border: var(--pixel) solid;
-  image-rendering: pixelated;
-}
-
-.msg-avatar.pm        { color: var(--pm);       border-color: var(--pm);       background: rgba(255,215,0,0.1); }
-.msg-avatar.architect { color: var(--arch);     border-color: var(--arch);     background: rgba(0,229,255,0.1); }
-.msg-avatar.coder     { color: var(--coder);    border-color: var(--coder);    background: rgba(105,255,71,0.1); }
-.msg-avatar.tester    { color: var(--tester);   border-color: var(--tester);   background: rgba(255,107,53,0.1); }
-.msg-avatar.reviewer  { color: var(--reviewer); border-color: var(--reviewer); background: rgba(218,119,255,0.1); }
-.msg-avatar.documenter{ color: var(--doc);      border-color: var(--doc);      background: rgba(255,119,169,0.1); }
-.msg-avatar.system    { color: var(--system);   border-color: var(--system);   background: rgba(102,102,102,0.1); }
-
-.msg-body { flex: 1; min-width: 0; }
-
-.msg-header {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  margin-bottom: 3px;
-}
-
-.msg-name {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 7px;
-  letter-spacing: 0.05em;
-}
-
-.msg-name.pm        { color: var(--pm); }
-.msg-name.architect { color: var(--arch); }
-.msg-name.coder     { color: var(--coder); }
-.msg-name.tester    { color: var(--tester); }
-.msg-name.reviewer  { color: var(--reviewer); }
-.msg-name.documenter{ color: var(--doc); }
-.msg-name.system    { color: var(--system); }
-
-.msg-time {
-  font-size: 13px;
-  color: var(--dim);
-}
-
-.msg-text {
-  font-size: 16px;
-  color: var(--text);
-  line-height: 1.5;
-  word-break: break-word;
-}
-
-/* typing cursor on last message */
-.msg-text.typing::after {
-  content: '▋';
-  animation: blink-px 0.7s steps(1) infinite;
-  color: var(--arch);
-}
-
-/* ── RIGHT PANEL ── */
-.right-col {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* mission panel */
-.mission-panel {
-  background: var(--panel);
-  border: var(--pixel) solid var(--border2);
-  box-shadow: 4px 4px 0 #000;
-  padding: 0;
-}
-
-.mission-body { padding: 12px; }
-
-.mission-title {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 8px;
-  color: var(--pm);
-  margin-bottom: 10px;
-  line-height: 1.6;
-  text-shadow: 1px 1px 0 #000;
-}
-
-.mission-progress {
-  margin-bottom: 10px;
-}
-
-.progress-label {
-  display: flex;
-  justify-content: space-between;
-  font-size: 13px;
-  color: var(--dim);
-  margin-bottom: 4px;
-}
-
-.progress-track {
-  height: 10px;
-  background: #000;
-  border: 1px solid var(--border2);
-  position: relative;
-  overflow: hidden;
-}
-
-.progress-fill-bar {
-  height: 100%;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--coder) 0px,
-    var(--coder) 8px,
-    transparent 8px,
-    transparent 10px
-  );
-  width: 0%;
-  transition: width 0.5s steps(20);
-  box-shadow: 0 0 8px var(--coder);
-}
-
-.steps-list {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-top: 10px;
-}
-
-.step-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-}
-
-.step-icon {
-  width: 10px; height: 10px;
-  flex-shrink: 0;
-  border: 1px solid var(--dim);
-}
-
-.step-icon.queued   { background: transparent; }
-.step-icon.running  { background: var(--arch); animation: blink-px 0.5s steps(1) infinite; }
-.step-icon.done     { background: var(--coder); border-color: var(--coder); }
-.step-icon.failed   { background: var(--tester); border-color: var(--tester); }
-
-.step-label { color: var(--dim); }
-.step-label.running { color: var(--text); }
-.step-label.done    { color: var(--coder); }
-.step-label.failed  { color: var(--tester); }
-
-/* event log */
-.log-panel {
-  background: var(--panel);
-  border: var(--pixel) solid var(--border2);
-  box-shadow: 4px 4px 0 #000;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  max-height: 260px;
-}
-
-.log-scroll {
-  flex: 1;
-  overflow-y: auto;
-  padding: 10px 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.log-scroll::-webkit-scrollbar { width: 4px; }
-.log-scroll::-webkit-scrollbar-thumb { background: var(--border2); }
-
-.log-item {
-  display: flex;
-  gap: 8px;
-  align-items: baseline;
-  font-size: 13px;
-  animation: msg-in 0.15s steps(3) forwards;
-  border-bottom: 1px solid rgba(255,255,255,0.03);
-  padding-bottom: 3px;
-}
-
-.log-bullet {
-  width: 6px; height: 6px;
-  flex-shrink: 0;
-  margin-top: 4px;
-}
-
-.log-bullet.working { background: var(--arch); }
-.log-bullet.done    { background: var(--coder); }
-.log-bullet.failed  { background: var(--tester); }
-.log-bullet.waiting { background: var(--pm); }
-.log-bullet.default { background: var(--dim); }
-
-.log-text { flex:1; color: var(--dim); line-height: 1.4; }
-.log-text strong { color: var(--text); }
-.log-time { color: var(--dim); flex-shrink: 0; font-size: 12px; }
-
-/* ── EMPTY STATE ── */
-.empty-px {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  gap: 12px;
-  opacity: 0.4;
-}
-
-.empty-px .px-char {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 24px;
-  color: var(--dim);
-  animation: blink-px 1.5s steps(1) infinite;
-}
-
-.empty-px p {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 8px;
-  color: var(--dim);
-  text-align: center;
-  line-height: 2;
-}
-
-/* ── PIXEL SPRITES (simple 8x8) ── */
-.pixel-face {
-  width: 32px; height: 32px;
-  margin: 0 auto 8px;
-  position: relative;
-}
-
-.pixel-face canvas {
-  width: 32px; height: 32px;
-  image-rendering: pixelated;
-}
-
-/* ── TICKER ── */
-.ticker {
-  margin-top: 12px;
-  background: #000;
-  border: var(--pixel) solid var(--border2);
-  box-shadow: 4px 4px 0 #000;
-  padding: 6px 12px;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.ticker-inner {
-  display: inline-block;
-  animation: ticker 30s linear infinite;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 7px;
-  color: var(--dim);
-  letter-spacing: 0.1em;
-}
-
-.ticker-inner span { color: var(--arch); margin: 0 20px; }
-
-@keyframes ticker {
-  0%   { transform: translateX(100vw); }
-  100% { transform: translateX(-100%); }
-}
+header{display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:28px;padding-bottom:18px;border-bottom:1.5px solid var(--border);}
+.h-title{font-family:'Fraunces',serif;font-size:26px;font-weight:300;
+  color:var(--text);letter-spacing:-0.02em;line-height:1;}
+.h-title em{font-style:italic;color:var(--pm);}
+.h-sub{font-size:10px;color:var(--dim);margin-top:5px;letter-spacing:0.1em;text-transform:uppercase;}
+.h-right{display:flex;align-items:center;gap:12px;}
+.h-time{font-size:11px;color:var(--dim);letter-spacing:0.06em;}
+.live-pill{display:flex;align-items:center;gap:6px;padding:4px 12px;
+  background:var(--cream2);border:1px solid var(--border);border-radius:100px;
+  font-size:9px;color:var(--text2);letter-spacing:0.1em;text-transform:uppercase;}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--coder);
+  animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.7)}}
+
+/* ── STATS BAR ── */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;}
+.stat-card{background:var(--cream2);border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px 16px;display:flex;flex-direction:column;gap:4px;}
+.stat-label{font-size:9px;color:var(--dim);letter-spacing:0.1em;text-transform:uppercase;}
+.stat-value{font-family:'Fraunces',serif;font-size:28px;font-weight:300;color:var(--text);line-height:1;}
+.stat-value em{font-style:normal;color:var(--pm);}
+.stat-sub{font-size:10px;color:var(--dim);font-weight:300;}
+
+/* ── AGENTS ── */
+.agents{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:20px;}
+.acard{background:var(--cream2);border:1px solid var(--border);border-radius:10px;
+  padding:14px 12px 10px;position:relative;
+  display:flex;flex-direction:column;align-items:flex-start;gap:4px;
+  transition:border-color 0.3s,box-shadow 0.3s;}
+.acard::after{content:'';position:absolute;top:0;left:12px;right:12px;
+  height:2px;border-radius:0 0 2px 2px;opacity:0;transition:opacity 0.3s;}
+.acard.is-active{border-color:var(--border2);box-shadow:var(--shadow);}
+.acard.is-active::after{opacity:1;}
+.acard.pm.is-active::after        {background:var(--pm);}
+.acard.architect.is-active::after {background:var(--arch);}
+.acard.coder.is-active::after     {background:var(--coder);}
+.acard.tester.is-active::after    {background:var(--tester);}
+.acard.reviewer.is-active::after  {background:var(--reviewer);}
+.acard.documenter.is-active::after{background:var(--doc);}
+.agent-avatar{width:26px;height:26px;border-radius:7px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:13px;margin-bottom:2px;}
+.acard.pm         .agent-avatar{background:rgba(193,127,58,0.12);}
+.acard.architect  .agent-avatar{background:rgba(74,127,165,0.12);}
+.acard.coder      .agent-avatar{background:rgba(90,148,101,0.12);}
+.acard.tester     .agent-avatar{background:rgba(184,92,56,0.12);}
+.acard.reviewer   .agent-avatar{background:rgba(122,92,158,0.12);}
+.acard.documenter .agent-avatar{background:rgba(158,92,122,0.12);}
+.agent-id{font-size:8px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;}
+.acard.pm         .agent-id{color:var(--pm);}
+.acard.architect  .agent-id{color:var(--arch);}
+.acard.coder      .agent-id{color:var(--coder);}
+.acard.tester     .agent-id{color:var(--tester);}
+.acard.reviewer   .agent-id{color:var(--reviewer);}
+.acard.documenter .agent-id{color:var(--doc);}
+.agent-role{font-size:9px;color:var(--dim);font-weight:300;line-height:1.4;}
+.agent-foot{margin-top:auto;padding-top:8px;width:100%;
+  display:flex;align-items:center;gap:5px;
+  border-top:1px solid var(--border);}
+.agent-foot .num{font-size:13px;font-weight:500;font-family:'Fraunces',serif;color:var(--text2);}
+.agent-foot .lbl{font-size:8px;color:var(--dim);flex:1;}
+.abadge{font-size:8px;padding:2px 6px;border-radius:100px;font-weight:400;letter-spacing:0.03em;white-space:nowrap;}
+.b-idle   {background:var(--warm);color:var(--dim);}
+.b-working{background:rgba(74,127,165,0.12);color:var(--arch);}
+.b-done   {background:rgba(90,148,101,0.12);color:var(--coder);}
+.b-failed {background:rgba(184,92,56,0.12);color:var(--tester);}
+.b-waiting{background:rgba(193,127,58,0.12);color:var(--pm);}
+
+/* ── MAIN GRID ── */
+.main-grid{display:grid;grid-template-columns:1fr 260px;gap:12px;}
+
+/* ── OUTPUTS PANEL ── */
+.outputs-panel{background:var(--cream2);border:1px solid var(--border);
+  border-radius:var(--radius);display:flex;flex-direction:column;
+  height:520px;box-shadow:var(--shadow);}
+.out-scroll{flex:1;overflow-y:auto;padding:10px 12px;
+  display:flex;flex-direction:column;gap:8px;}
+.out-scroll::-webkit-scrollbar{width:3px;}
+.out-scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+.out-item{background:var(--cream);border:1px solid var(--border);
+  border-radius:9px;padding:10px 12px;cursor:pointer;
+  transition:border-color 0.2s,box-shadow 0.2s;}
+.out-item:hover{border-color:var(--border2);box-shadow:var(--shadow);}
+.out-item-top{display:flex;align-items:center;gap:6px;margin-bottom:4px;}
+.out-icon{font-size:12px;}
+.out-title{font-size:11px;color:var(--text);font-weight:400;flex:1;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.out-arrow{font-size:10px;color:var(--dim);}
+.out-meta{font-size:9px;color:var(--dim);font-weight:300;}
+.out-mission{font-size:9px;color:var(--dim);font-weight:300;
+  margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+/* ── CHAT ── */
+.chat-panel{background:var(--cream2);border:1px solid var(--border);
+  border-radius:var(--radius);display:flex;flex-direction:column;
+  height:520px;box-shadow:var(--shadow);}
+.panel-head{display:flex;align-items:center;justify-content:space-between;
+  padding:12px 16px;border-bottom:1px solid var(--border);flex-shrink:0;}
+.panel-label{font-size:9px;color:var(--dim);letter-spacing:0.12em;text-transform:uppercase;}
+.panel-count{font-size:9px;color:var(--dim);background:var(--warm);
+  border-radius:100px;padding:2px 8px;}
+.chat-scroll{flex:1;overflow-y:auto;padding:16px;
+  display:flex;flex-direction:column;gap:14px;}
+.chat-scroll::-webkit-scrollbar{width:4px;}
+.chat-scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+.chat-msg{display:flex;gap:10px;animation:fadein 0.2s ease;}
+@keyframes fadein{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+.msg-avt{width:28px;height:28px;border-radius:7px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:13px;margin-top:1px;}
+.msg-avt.pm        {background:rgba(193,127,58,0.15);color:var(--pm);}
+.msg-avt.architect {background:rgba(74,127,165,0.15);color:var(--arch);}
+.msg-avt.coder     {background:rgba(90,148,101,0.15);color:var(--coder);}
+.msg-avt.tester    {background:rgba(184,92,56,0.15);color:var(--tester);}
+.msg-avt.reviewer  {background:rgba(122,92,158,0.15);color:var(--reviewer);}
+.msg-avt.documenter{background:rgba(158,92,122,0.15);color:var(--doc);}
+.msg-avt.system    {background:var(--warm);color:var(--dim);}
+.msg-body{flex:1;min-width:0;}
+.msg-meta{display:flex;align-items:baseline;gap:7px;margin-bottom:3px;}
+.msg-name{font-size:9px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;}
+.msg-name.pm        {color:var(--pm);}
+.msg-name.architect {color:var(--arch);}
+.msg-name.coder     {color:var(--coder);}
+.msg-name.tester    {color:var(--tester);}
+.msg-name.reviewer  {color:var(--reviewer);}
+.msg-name.documenter{color:var(--doc);}
+.msg-name.system    {color:var(--dim);}
+.msg-time{font-size:9px;color:var(--dim);font-weight:300;}
+.msg-text{font-size:13px;color:var(--text);line-height:1.7;font-weight:300;word-break:break-word;}
+
+/* output button — used in timeline */
+.output-btn{display:flex;align-items:center;gap:6px;width:100%;
+  margin-top:10px;padding:7px 10px;
+  background:var(--cream);border:1px solid var(--border2);
+  border-radius:8px;cursor:pointer;font-family:'DM Mono',monospace;
+  font-size:10px;color:var(--text2);font-weight:400;
+  transition:background 0.2s,border-color 0.2s;text-align:left;}
+.output-btn:hover{background:var(--warm);border-color:var(--border2);}
+.output-btn .ob-icon{font-size:12px;}
+.output-btn .ob-title{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.output-btn .ob-arrow{color:var(--dim);flex-shrink:0;}
+
+/* ── TIMELINE ── */
+.timeline-section{margin-top:20px;}
+.section-title{font-family:'Fraunces',serif;font-size:16px;font-weight:300;
+  color:var(--text);margin-bottom:14px;padding-bottom:10px;
+  border-bottom:1px solid var(--border);}
+.section-title em{font-style:italic;color:var(--pm);}
+.timeline{display:flex;flex-direction:column;gap:0;}
+.tl-item{display:grid;grid-template-columns:100px 20px 1fr;
+  gap:0 16px;align-items:start;padding:0 0 20px;}
+.tl-time{font-size:10px;color:var(--dim);font-weight:300;
+  text-align:right;padding-top:2px;line-height:1.4;}
+.tl-spine{display:flex;flex-direction:column;align-items:center;gap:0;}
+.tl-dot{width:10px;height:10px;border-radius:50%;
+  background:var(--cream2);border:2px solid var(--border2);
+  flex-shrink:0;margin-top:3px;transition:border-color 0.3s;}
+.tl-item.succeeded .tl-dot{background:var(--coder);border-color:var(--coder);}
+.tl-item.running   .tl-dot{background:var(--arch);border-color:var(--arch);
+  animation:pulse 1.5s infinite;}
+.tl-item.failed    .tl-dot{background:var(--tester);border-color:var(--tester);}
+.tl-line{width:1.5px;flex:1;background:var(--border);min-height:16px;}
+.tl-item:last-child .tl-line{opacity:0;}
+.tl-card{background:var(--cream2);border:1px solid var(--border);
+  border-radius:10px;padding:12px 14px;cursor:pointer;
+  transition:border-color 0.2s,box-shadow 0.2s;}
+.tl-card:hover{border-color:var(--border2);box-shadow:var(--shadow);}
+.tl-card-top{display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:8px;}
+.tl-card-title{font-size:13px;font-weight:400;color:var(--text);}
+.tl-status{font-size:9px;padding:2px 7px;border-radius:100px;}
+.tl-status.succeeded{background:rgba(90,148,101,0.12);color:var(--coder);}
+.tl-status.running  {background:rgba(74,127,165,0.12);color:var(--arch);}
+.tl-status.failed   {background:rgba(184,92,56,0.12);color:var(--tester);}
+.tl-metrics{display:flex;gap:14px;flex-wrap:wrap;}
+.tl-metric{font-size:10px;color:var(--dim);display:flex;align-items:center;gap:4px;font-weight:300;}
+.tl-metric span{color:var(--text2);font-weight:400;}
+.tl-outputs{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
+.tl-out-btn{display:flex;align-items:center;gap:4px;
+  padding:3px 9px;background:var(--warm);
+  border:1px solid var(--border);border-radius:100px;
+  font-size:9px;color:var(--text2);cursor:pointer;
+  transition:background 0.2s;font-family:'DM Mono',monospace;}
+.tl-out-btn:hover{background:var(--border);}
+
+/* ── OUTPUT MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(58,51,40,0.4);
+  display:flex;align-items:center;justify-content:center;
+  z-index:100;backdrop-filter:blur(6px);opacity:0;
+  pointer-events:none;transition:opacity 0.2s;}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal{background:var(--cream);border:1px solid var(--border2);
+  border-radius:16px;width:680px;max-width:92vw;max-height:82vh;
+  display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(58,51,40,0.2);
+  transform:translateY(8px);transition:transform 0.2s;}
+.modal-overlay.open .modal{transform:translateY(0);}
+.modal-head{display:flex;align-items:center;justify-content:space-between;
+  padding:16px 20px;border-bottom:1px solid var(--border);}
+.modal-title{font-family:'Fraunces',serif;font-size:17px;font-weight:300;color:var(--text);}
+.modal-close{width:28px;height:28px;border-radius:7px;border:1px solid var(--border);
+  background:var(--cream2);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:14px;color:var(--dim);transition:background 0.2s;}
+.modal-close:hover{background:var(--warm);}
+.modal-meta{display:flex;gap:12px;padding:10px 20px;
+  border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.modal-tag{font-size:9px;color:var(--dim);background:var(--warm);
+  border-radius:100px;padding:2px 8px;letter-spacing:0.06em;}
+.modal-body{flex:1;overflow-y:auto;padding:20px;
+  font-size:13px;color:var(--text);line-height:1.8;font-weight:300;
+  white-space:pre-wrap;word-break:break-word;}
+.modal-body::-webkit-scrollbar{width:4px;}
+.modal-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+
+/* empty */
+.empty-state{display:flex;flex-direction:column;align-items:center;
+  justify-content:center;height:100%;gap:8px;opacity:0.5;}
+.empty-state p{font-size:10px;color:var(--dim);text-align:center;
+  line-height:1.8;font-weight:300;}
 </style>
 </head>
 <body>
@@ -646,154 +259,150 @@ header::before {
 
   <!-- HEADER -->
   <header>
-    <div class="h-logo">
-      AI DEV TEAM <span>▓</span> PIXEL OFFICE<br>
-      <span style="font-size:8px;color:var(--dim)" id="subline">CONNECTING...</span>
+    <div>
+      <div class="h-title">AI Dev Team <em>&</em> Live</div>
+      <div class="h-sub" id="subline">connecting...</div>
     </div>
     <div class="h-right">
-      <div class="h-time" id="clock">00:00:00</div>
-      <div class="live-badge">
-        <div class="blink-dot"></div>
-        <span id="liveLabel">LIVE</span>
+      <span class="h-time" id="clock">--:--:--</span>
+      <div class="live-pill">
+        <div class="live-dot"></div>
+        <span id="liveLabel">live</span>
       </div>
     </div>
   </header>
 
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-card">
+      <div class="stat-label">累计任务</div>
+      <div class="stat-value" id="statTotal">—</div>
+      <div class="stat-sub">历史完成</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">平均耗时</div>
+      <div class="stat-value" id="statAvgTime">—</div>
+      <div class="stat-sub">分钟 / 任务</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">累计消息</div>
+      <div class="stat-value" id="statMsgs">—</div>
+      <div class="stat-sub">Agent 发言</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Bug 修复</div>
+      <div class="stat-value" id="statBugs">—</div>
+      <div class="stat-sub">已发现并修复</div>
+    </div>
+  </div>
+
   <!-- AGENT CARDS -->
   <div class="agents">
-
     <div class="acard pm" id="card-pm">
-      <div class="pixel-face"><canvas id="sprite-pm" width="32" height="32"></canvas></div>
-      <div class="agent-name">P.M.</div>
-      <div class="agent-role">任务分配<br>进度把控</div>
-      <div class="status-bar"><div class="status-fill" id="fill-pm"></div></div>
-      <div class="agent-msg" id="msg-pm">待机中...</div>
-      <div class="agent-cnt"><span class="num" id="cnt-pm">0</span> MSGS</div>
+      <div class="agent-avatar">🧭</div>
+      <div class="agent-id">P.M.</div>
+      <div class="agent-role">任务分配 · 进度把控</div>
+      <div class="agent-foot">
+        <span class="num" id="cnt-pm">0</span><span class="lbl">条</span>
+        <span class="abadge b-idle" id="badge-pm">待机</span>
+      </div>
     </div>
-
     <div class="acard architect" id="card-architect">
-      <div class="pixel-face"><canvas id="sprite-architect" width="32" height="32"></canvas></div>
-      <div class="agent-name">ARCH</div>
-      <div class="agent-role">需求分析<br>方案设计</div>
-      <div class="status-bar"><div class="status-fill" id="fill-architect"></div></div>
-      <div class="agent-msg" id="msg-architect">待机中...</div>
-      <div class="agent-cnt"><span class="num" id="cnt-architect">0</span> MSGS</div>
+      <div class="agent-avatar">🏛</div>
+      <div class="agent-id">Architect</div>
+      <div class="agent-role">需求分析 · 方案设计</div>
+      <div class="agent-foot">
+        <span class="num" id="cnt-architect">0</span><span class="lbl">条</span>
+        <span class="abadge b-idle" id="badge-architect">待机</span>
+      </div>
     </div>
-
     <div class="acard coder" id="card-coder">
-      <div class="pixel-face"><canvas id="sprite-coder" width="32" height="32"></canvas></div>
-      <div class="agent-name">CODER</div>
-      <div class="agent-role">代码实现<br>Bug修复</div>
-      <div class="status-bar"><div class="status-fill" id="fill-coder"></div></div>
-      <div class="agent-msg" id="msg-coder">待机中...</div>
-      <div class="agent-cnt"><span class="num" id="cnt-coder">0</span> MSGS</div>
+      <div class="agent-avatar">⌨️</div>
+      <div class="agent-id">Coder</div>
+      <div class="agent-role">代码实现 · Bug 修复</div>
+      <div class="agent-foot">
+        <span class="num" id="cnt-coder">0</span><span class="lbl">条</span>
+        <span class="abadge b-idle" id="badge-coder">待机</span>
+      </div>
     </div>
-
     <div class="acard tester" id="card-tester">
-      <div class="pixel-face"><canvas id="sprite-tester" width="32" height="32"></canvas></div>
-      <div class="agent-name">TESTER</div>
-      <div class="agent-role">测试用例<br>Bug追踪</div>
-      <div class="status-bar"><div class="status-fill" id="fill-tester"></div></div>
-      <div class="agent-msg" id="msg-tester">待机中...</div>
-      <div class="agent-cnt"><span class="num" id="cnt-tester">0</span> MSGS</div>
+      <div class="agent-avatar">🔍</div>
+      <div class="agent-id">Tester</div>
+      <div class="agent-role">测试用例 · Bug 追踪</div>
+      <div class="agent-foot">
+        <span class="num" id="cnt-tester">0</span><span class="lbl">条</span>
+        <span class="abadge b-idle" id="badge-tester">待机</span>
+      </div>
     </div>
-
     <div class="acard reviewer" id="card-reviewer">
-      <div class="pixel-face"><canvas id="sprite-reviewer" width="32" height="32"></canvas></div>
-      <div class="agent-name">REVIEW</div>
-      <div class="agent-role">代码审查<br>安全检测</div>
-      <div class="status-bar"><div class="status-fill" id="fill-reviewer"></div></div>
-      <div class="agent-msg" id="msg-reviewer">待机中...</div>
-      <div class="agent-cnt"><span class="num" id="cnt-reviewer">0</span> MSGS</div>
+      <div class="agent-avatar">📐</div>
+      <div class="agent-id">Reviewer</div>
+      <div class="agent-role">代码审查 · 安全检测</div>
+      <div class="agent-foot">
+        <span class="num" id="cnt-reviewer">0</span><span class="lbl">条</span>
+        <span class="abadge b-idle" id="badge-reviewer">待机</span>
+      </div>
     </div>
-
     <div class="acard documenter" id="card-documenter">
-      <div class="pixel-face"><canvas id="sprite-documenter" width="32" height="32"></canvas></div>
-      <div class="agent-name">DOC</div>
-      <div class="agent-role">API文档<br>变更记录</div>
-      <div class="status-bar"><div class="status-fill" id="fill-documenter"></div></div>
-      <div class="agent-msg" id="msg-documenter">待机中...</div>
-      <div class="agent-cnt"><span class="num" id="cnt-documenter">0</span> MSGS</div>
+      <div class="agent-avatar">📝</div>
+      <div class="agent-id">Documenter</div>
+      <div class="agent-role">API 文档 · 变更记录</div>
+      <div class="agent-foot">
+        <span class="num" id="cnt-documenter">0</span><span class="lbl">条</span>
+        <span class="abadge b-idle" id="badge-documenter">待机</span>
+      </div>
     </div>
-
   </div>
 
   <!-- MAIN GRID -->
   <div class="main-grid">
-
     <!-- CHAT -->
     <div class="chat-panel">
-      <div class="panel-titlebar">
-        <div class="panel-titlebar-dots">
-          <div class="dot-r"></div>
-          <div class="dot-y"></div>
-          <div class="dot-g"></div>
-        </div>
-        <span class="panel-label">▶ AGENT COMMS CHANNEL</span>
-        <span class="panel-count" id="msgCount">0 LINES</span>
+      <div class="panel-head">
+        <span class="panel-label">Agent 实时对话</span>
+        <span class="panel-count" id="msgCount">0 条</span>
       </div>
       <div class="chat-scroll" id="chatScroll">
-        <div class="empty-px">
-          <div class="px-char">?</div>
-          <p>WAITING FOR<br>AGENT SIGNAL...</p>
-        </div>
+        <div class="empty-state"><p>等待 Agent 开始工作…</p></div>
       </div>
     </div>
 
-    <!-- RIGHT -->
-    <div class="right-col">
-
-      <!-- MISSION -->
-      <div class="mission-panel">
-        <div class="panel-titlebar">
-          <div class="panel-titlebar-dots">
-            <div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div>
-          </div>
-          <span class="panel-label">▶ CURRENT MISSION</span>
-          <span class="panel-count" id="pctLabel">0%</span>
-        </div>
-        <div class="mission-body">
-          <div class="mission-title" id="missionTitle">-- STANDBY --</div>
-          <div class="mission-progress">
-            <div class="progress-label">
-              <span id="stepLabel">0 / 0 STEPS</span>
-            </div>
-            <div class="progress-track">
-              <div class="progress-fill-bar" id="progressBar"></div>
-            </div>
-          </div>
-          <div class="steps-list" id="stepsList"></div>
+    <!-- OUTPUTS -->
+    <div class="outputs-panel">
+      <div class="panel-head">
+        <span class="panel-label">任务产出</span>
+        <span class="panel-count" id="outCount">0 份</span>
+      </div>
+      <div class="out-scroll" id="outScroll">
+        <div class="empty-state" style="height:100%">
+          <p>任务完成后<br>产出文档将在这里显示</p>
         </div>
       </div>
-
-      <!-- EVENT LOG -->
-      <div class="log-panel">
-        <div class="panel-titlebar">
-          <div class="panel-titlebar-dots">
-            <div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div>
-          </div>
-          <span class="panel-label">▶ SYSTEM LOG</span>
-          <span class="panel-count" id="evCount">0 EVENTS</span>
-        </div>
-        <div class="log-scroll" id="logScroll">
-          <div class="empty-px" style="height:80px">
-            <p style="font-size:7px">NO EVENTS YET</p>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 
-  <!-- TICKER -->
-  <div class="ticker">
-    <div class="ticker-inner" id="tickerText">
-      <span>AI DEV TEAM</span> PIXEL OFFICE LIVE DASHBOARD
-      <span>AGENTS ONLINE: 6</span> PM · ARCHITECT · CODER · TESTER · REVIEWER · DOCUMENTER
-      <span>STATUS</span> WAITING FOR MISSION INPUT...
+  <!-- TIMELINE -->
+  <div class="timeline-section">
+    <div class="section-title">历史任务 <em>Timeline</em></div>
+    <div class="timeline" id="timeline">
+      <div class="empty-state" style="height:80px;opacity:0.4">
+        <p>暂无历史任务记录</p>
+      </div>
     </div>
   </div>
 
+</div>
+
+<!-- OUTPUT MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-title" id="modalTitle">产出文档</div>
+      <div class="modal-close" onclick="closeModal()">✕</div>
+    </div>
+    <div class="modal-meta" id="modalMeta"></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
 </div>
 
 <script>
@@ -804,96 +413,65 @@ const SUPABASE_URL = 'https://lhelanznacgcrjwdswtt.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_640vqUptIUK4vDkyN6coIA_tQz267UM';
 // ═══════════════════════════════
 
-const AGENTS = ['pm','architect','coder','tester','reviewer','documenter'];
-const AVT = {pm:'PM',architect:'AR',coder:'CD',tester:'TS',reviewer:'RV',documenter:'DC',system:'SY'};
-const COLORS = {
-  pm:'#ffd700',architect:'#00e5ff',coder:'#69ff47',
-  tester:'#ff6b35',reviewer:'#da77ff',documenter:'#ff77a9',system:'#666'
-};
-let msgTotal = 0, evTotal = 0;
+const AGENTS  = ['pm','architect','coder','tester','reviewer','documenter'];
+const EMOJIS  = {pm:'🧭',architect:'🏛',coder:'⌨️',tester:'🔍',reviewer:'📐',documenter:'📝',system:'⚙️'};
+let msgTotal  = 0;
+const msgCounts = {};
+let sbClient = null;
 
 // ── CLOCK ──
-function updateClock() {
-  const now = new Date();
+setInterval(() => {
   document.getElementById('clock').textContent =
-    now.toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-}
-setInterval(updateClock, 1000);
-updateClock();
+    new Date().toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+}, 1000);
 
-// ── PIXEL SPRITES ──
-function drawSprite(canvasId, color) {
-  const c = document.getElementById(canvasId);
-  if (!c) return;
-  const ctx = c.getContext('2d');
-  const px = 4;
-  // Simple 8x8 pixel character
-  const patterns = {
-    'sprite-pm':        '00111100 01111110 01011010 01111110 00111100 00100100 01100110 01000010',
-    'sprite-architect': '00111100 01111110 11011011 11111111 11111111 01011010 10000001 01000010',
-    'sprite-coder':     '00111100 01111110 10111101 11111111 01111110 00111100 01011010 10100101',
-    'sprite-tester':    '00111100 01111110 11011011 11111111 11111111 00111100 01000010 10111101',
-    'sprite-reviewer':  '00111100 01111110 10011001 11111111 01111110 00111100 01111110 00100100',
-    'sprite-documenter':'00111100 01111110 11111111 10111101 11111111 01111110 00100100 01000010',
-  };
-  const pat = patterns[canvasId] || patterns['sprite-pm'];
-  const rows = pat.split(' ');
-  ctx.clearRect(0, 0, 32, 32);
-  rows.forEach((row, y) => {
-    [...row].forEach((bit, x) => {
-      if (bit === '1') {
-        ctx.fillStyle = color;
-        ctx.fillRect(x * px, y * px, px, px);
-      }
-    });
-  });
-}
-
-// draw all sprites
-const spriteColors = {
-  'sprite-pm':'#ffd700','sprite-architect':'#00e5ff','sprite-coder':'#69ff47',
-  'sprite-tester':'#ff6b35','sprite-reviewer':'#da77ff','sprite-documenter':'#ff77a9'
-};
-Object.entries(spriteColors).forEach(([id, color]) => drawSprite(id, color));
-
-// ── HELPERS ──
 function fmt(iso) {
   return new Date(iso).toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
 }
 
-function updateCard(agent, message, status) {
-  if (!AGENTS.includes(agent)) return;
-  const card = document.getElementById(`card-${agent}`);
-  const msgEl = document.getElementById(`msg-${agent}`);
-  const cntEl = document.getElementById(`cnt-${agent}`);
-  const fillEl = document.getElementById(`fill-${agent}`);
-
-  if (message) msgEl.textContent = message.slice(0, 60) + (message.length > 60 ? '...' : '');
-  cntEl.textContent = parseInt(cntEl.textContent || 0) + 1;
-
-  const isWorking = status === 'working';
-  card.classList.toggle('is-active', isWorking);
-  if (!isWorking) fillEl.style.width = status === 'done' ? '100%' : '0%';
+function fmtDate(iso) {
+  return new Date(iso).toLocaleDateString('zh-CN',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
 }
 
-// ── ADD CHAT MESSAGE ──
+function fmtDuration(secs) {
+  if (!secs) return '—';
+  if (secs < 60) return `${secs}s`;
+  return `${Math.round(secs/60)}m`;
+}
+
+// ── CARD UPDATE ──
+function updateCard(agent, status) {
+  if (!AGENTS.includes(agent)) return;
+  const card  = document.getElementById(`card-${agent}`);
+  const badge = document.getElementById(`badge-${agent}`);
+  card.classList.toggle('is-active', status === 'working');
+  msgCounts[agent] = (msgCounts[agent]||0) + 1;
+  document.getElementById(`cnt-${agent}`).textContent = msgCounts[agent];
+  const map = {working:['b-working','工作中'],done:['b-done','完成'],
+               failed:['b-failed','失败'],waiting:['b-waiting','等待中']};
+  const [cls, label] = map[status] || ['b-idle','待机'];
+  badge.className = `abadge ${cls}`;
+  badge.textContent = label;
+}
+
+// ── ADD CHAT MSG ──
 function addMsg(event) {
   const scroll = document.getElementById('chatScroll');
-  const empty = scroll.querySelector('.empty-px');
+  const empty  = scroll.querySelector('.empty-state');
   if (empty) empty.remove();
 
-  const agent = event.agent || 'system';
-  const p = typeof event.payload === 'object' ? event.payload : {};
-  const message = p.message || (typeof event.payload === 'string' ? event.payload : JSON.stringify(p));
-  const status = p.status || 'working';
+  const agent   = event.agent || 'system';
+  const p       = typeof event.payload==='object' ? event.payload : {};
+  const message = p.message || (typeof event.payload==='string' ? event.payload : JSON.stringify(p));
+  const status  = p.status || 'working';
 
   const el = document.createElement('div');
   el.className = 'chat-msg';
   el.innerHTML = `
-    <div class="msg-avatar ${agent}">${AVT[agent]||'??'}</div>
+    <div class="msg-avt ${agent}">${EMOJIS[agent]||'?'}</div>
     <div class="msg-body">
-      <div class="msg-header">
-        <span class="msg-name ${agent}">${agent.toUpperCase()}</span>
+      <div class="msg-meta">
+        <span class="msg-name ${agent}">${agent}</span>
         <span class="msg-time">${fmt(event.created_at)}</span>
       </div>
       <div class="msg-text">${message}</div>
@@ -902,125 +480,169 @@ function addMsg(event) {
   scroll.appendChild(el);
   scroll.scrollTop = scroll.scrollHeight;
   msgTotal++;
-  document.getElementById('msgCount').textContent = `${msgTotal} LINES`;
-  updateCard(agent, message, status);
-
-  // update ticker
-  document.getElementById('tickerText').innerHTML =
-    `<span>LATEST</span> [${agent.toUpperCase()}] ${message.slice(0,60)}... <span>AGENTS ONLINE: 6</span> ALL SYSTEMS GO`;
+  document.getElementById('msgCount').textContent = `${msgTotal} 条`;
+  updateCard(agent, status);
 }
 
-// ── ADD EVENT LOG ──
-function addLog(event) {
-  const scroll = document.getElementById('logScroll');
-  const empty = scroll.querySelector('.empty-px');
+// ── OUTPUTS ──
+async function loadMissionOutputs(missionId) {
+  if (!sbClient || !missionId) return [];
+  const { data } = await sbClient.from('dev_outputs')
+    .select('*').eq('mission_id', missionId).order('created_at');
+  return data || [];
+}
+
+// ── OUTPUTS PANEL ──
+let outTotal = 0;
+async function loadOutputsPanel() {
+  if (!sbClient) return;
+  const { data } = await sbClient.from('dev_outputs')
+    .select('*, dev_missions(title)')
+    .order('created_at', {ascending: false}).limit(30);
+  if (!data || !data.length) return;
+
+  const scroll = document.getElementById('outScroll');
+  const empty  = scroll.querySelector('.empty-state');
   if (empty) empty.remove();
+  scroll.innerHTML = '';
+  outTotal = data.length;
+  document.getElementById('outCount').textContent = `${outTotal} 份`;
 
-  const p = typeof event.payload === 'object' ? event.payload : {};
-  const status = p.status || 'default';
-  const dotCls = ['working','done','failed','waiting'].includes(status) ? status : 'default';
-  const text = p.message || p.text || event.event_type;
-
-  const el = document.createElement('div');
-  el.className = 'log-item';
-  el.innerHTML = `
-    <div class="log-bullet ${dotCls}"></div>
-    <div class="log-text"><strong>${(event.agent||'SYS').toUpperCase()}</strong> ${text.slice(0,50)}</div>
-    <div class="log-time">${fmt(event.created_at)}</div>`;
-
-  scroll.appendChild(el);
-  scroll.scrollTop = scroll.scrollHeight;
-  evTotal++;
-  document.getElementById('evCount').textContent = `${evTotal} EVENTS`;
+  data.forEach(o => {
+    const el = document.createElement('div');
+    el.className = 'out-item';
+    el.innerHTML = `
+      <div class="out-item-top">
+        <span class="out-icon">📄</span>
+        <span class="out-title">${o.title}</span>
+        <span class="out-arrow">→</span>
+      </div>
+      <div class="out-meta">${o.output_type || 'document'} · ${fmtDate(o.created_at)}</div>
+      ${o.dev_missions?.title ? `<div class="out-mission">来自：${o.dev_missions.title}</div>` : ''}`;
+    el.onclick = () => openModal(o);
+    scroll.appendChild(el);
+  });
 }
 
-// ── MISSION ──
-function renderMission(mission) {
-  if (!mission) return;
-  document.getElementById('missionTitle').textContent =
-    (mission.title || 'UNKNOWN MISSION').toUpperCase();
+// ── MODAL ──
+function openModal(output) {
+  document.getElementById('modalTitle').textContent = output.title;
+  document.getElementById('modalMeta').innerHTML = `
+    <span class="modal-tag">${output.output_type || 'document'}</span>
+    <span class="modal-tag">${fmtDate(output.created_at)}</span>`;
+  document.getElementById('modalBody').textContent = output.content;
+  document.getElementById('modalOverlay').classList.add('open');
+}
 
-  const steps = mission.dev_steps || [];
-  const done = steps.filter(s => s.status === 'succeeded').length;
-  const total = steps.length;
-  const pct = total ? Math.round(done / total * 100) : 0;
+function closeModal(e) {
+  if (!e || e.target === document.getElementById('modalOverlay') || e.target.className === 'modal-close') {
+    document.getElementById('modalOverlay').classList.remove('open');
+  }
+}
 
-  document.getElementById('progressBar').style.width = pct + '%';
-  document.getElementById('stepLabel').textContent = `${done} / ${total} STEPS`;
-  document.getElementById('pctLabel').textContent = pct + '%';
+document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal({target:document.getElementById('modalOverlay')}); });
 
-  const list = document.getElementById('stepsList');
-  list.innerHTML = '';
-  steps.forEach(s => {
-    const st = s.status === 'succeeded' ? 'done' : s.status;
-    const icons = {queued:'□',running:'▶',done:'■',failed:'✕'};
-    const el = document.createElement('div');
-    el.className = 'step-item';
-    el.innerHTML = `
-      <div class="step-icon ${st}"></div>
-      <span class="step-label ${st}">${icons[st]||'○'} ${s.step_kind || s.assigned_to} · ${st.toUpperCase()}</span>`;
-    list.appendChild(el);
-  });
+// ── TIMELINE ──
+async function loadTimeline() {
+  if (!sbClient) return;
+  const { data: missions } = await sbClient
+    .from('dev_missions').select('*')
+    .order('created_at',{ascending:false}).limit(20);
+
+  if (!missions || !missions.length) return;
+
+  // stats
+  const succeeded = missions.filter(m=>m.status==='succeeded');
+  document.getElementById('statTotal').textContent   = missions.length;
+  document.getElementById('statMsgs').textContent    = missions.reduce((a,m)=>a+(m.total_messages||0),0)||'—';
+  document.getElementById('statBugs').textContent    = missions.reduce((a,m)=>a+(m.bugs_fixed||0),0)||'—';
+
+  const withDuration = succeeded.filter(m=>m.duration_seconds);
+  if (withDuration.length) {
+    const avg = Math.round(withDuration.reduce((a,m)=>a+m.duration_seconds,0)/withDuration.length/60);
+    document.getElementById('statAvgTime').innerHTML = `${avg}<em>m</em>`;
+  }
+
+  // timeline
+  const tl = document.getElementById('timeline');
+  const empty = tl.querySelector('.empty-state');
+  if (empty) empty.remove();
+  tl.innerHTML = '';
+
+  for (const m of missions) {
+    const outputs = await loadMissionOutputs(m.id);
+
+    const item = document.createElement('div');
+    item.className = `tl-item ${m.status}`;
+
+    const duration = m.duration_seconds ? fmtDuration(m.duration_seconds) :
+      (m.finished_at && m.started_at ?
+        fmtDuration(Math.round((new Date(m.finished_at)-new Date(m.started_at))/1000)) : '—');
+
+    const statusLabel = {succeeded:'完成',running:'进行中',failed:'失败'}[m.status]||m.status;
+
+    const outBtns = (outputs||[]).map(o=>
+      `<button class="tl-out-btn" onclick='openModal(${JSON.stringify(o).replace(/'/g,"&#39;")})'>📄 ${o.title}</button>`
+    ).join('');
+
+    item.innerHTML = `
+      <div class="tl-time">${fmtDate(m.created_at)}</div>
+      <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-card">
+        <div class="tl-card-top">
+          <div class="tl-card-title">${m.title||'未命名任务'}</div>
+          <span class="tl-status ${m.status}">${statusLabel}</span>
+        </div>
+        <div class="tl-metrics">
+          <div class="tl-metric">⏱ 耗时 <span>${duration}</span></div>
+          ${m.total_messages ? `<div class="tl-metric">💬 消息 <span>${m.total_messages}</span></div>` : ''}
+          ${m.bugs_found ? `<div class="tl-metric">🐛 Bug <span>${m.bugs_found} 发现 / ${m.bugs_fixed||0} 修复</span></div>` : ''}
+        </div>
+        ${outBtns ? `<div class="tl-outputs">${outBtns}</div>` : ''}
+      </div>`;
+
+    tl.appendChild(item);
+  }
 }
 
 // ── INIT ──
 async function init() {
-  if (!SUPABASE_URL || SUPABASE_URL === '你的URL') {
-    document.getElementById('subline').textContent = '⚠ PLEASE SET SUPABASE CONFIG';
+  if (!SUPABASE_URL || SUPABASE_URL==='你的URL') {
+    document.getElementById('subline').textContent = '请填入 Supabase 连接信息';
     return;
   }
 
-  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-  document.getElementById('subline').textContent = 'CONNECTED · SUPABASE REALTIME';
+  sbClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  document.getElementById('subline').textContent = '已连接 · 实时监控中';
 
-  // load history
-  const { data: events } = await sb
-    .from('dev_events')
-    .select('*')
-    .order('created_at', { ascending: false })
-    .limit(80);
+  // history events
+  const { data: events } = await sbClient.from('dev_events').select('*')
+    .order('created_at',{ascending:false}).limit(80);
+  if (events) [...events].reverse().forEach(e => {
+    if (e.event_type==='agent_message') addMsg(e);
+  });
 
-  if (events) {
-    [...events].reverse().forEach(e => {
-      if (e.event_type === 'agent_message') addMsg(e);
-      else addLog(e);
-    });
-  }
-
-  // load latest mission
-  const { data: missions } = await sb
-    .from('dev_missions')
-    .select('*, dev_steps(*)')
-    .eq('status', 'running')
-    .order('created_at', { ascending: false })
-    .limit(1);
-
-  if (missions && missions[0]) renderMission(missions[0]);
+  // timeline & stats
+  await loadTimeline();
+  await loadOutputsPanel();
 
   // realtime
-  sb.channel('pixel-office')
+  sbClient.channel('team-live')
     .on('postgres_changes',{event:'INSERT',schema:'public',table:'dev_events'}, p => {
       const e = p.new;
-      if (e.event_type === 'agent_message') addMsg(e);
-      else addLog(e);
+      if (e.event_type==='agent_message') addMsg(e);
     })
-    .on('postgres_changes',{event:'*',schema:'public',table:'dev_steps'}, () => {
-      refreshMission(sb);
+    .on('postgres_changes',{event:'INSERT',schema:'public',table:'dev_missions'}, () => {
+      loadTimeline();
     })
-    .on('postgres_changes',{event:'INSERT',schema:'public',table:'dev_missions'}, p => {
-      renderMission(p.new);
+    .on('postgres_changes',{event:'UPDATE',schema:'public',table:'dev_missions'}, () => {
+      loadTimeline();
+    })
+    .on('postgres_changes',{event:'INSERT',schema:'public',table:'dev_outputs'}, () => {
+      loadTimeline();
+      loadOutputsPanel();
     })
     .subscribe();
-}
-
-async function refreshMission(sb) {
-  const { data } = await sb
-    .from('dev_missions')
-    .select('*, dev_steps(*)')
-    .eq('status', 'running')
-    .order('created_at', { ascending: false })
-    .limit(1);
-  if (data && data[0]) renderMission(data[0]);
 }
 
 init();
