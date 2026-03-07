@@ -7,410 +7,315 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-  :root {
-    --bg: #080810;
-    --surface: #0f0f1a;
-    --surface2: #161622;
-    --border: #1e1e2e;
-    --leader:   #f4c430;
-    --coder:    #00d4ff;
-    --reviewer: #34d399;
-    --text: #dde1f0;
-    --text-dim: #555570;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:var(--bg); color:var(--text); font-family:'Noto Sans SC',sans-serif; min-height:100vh; }
-  body::before {
-    content:''; position:fixed; inset:0;
-    background: radial-gradient(ellipse 60% 40% at 20% 0%,rgba(244,196,48,0.04) 0%,transparent 60%),
-                radial-gradient(ellipse 50% 30% at 80% 100%,rgba(52,211,153,0.04) 0%,transparent 60%);
-    pointer-events:none; z-index:0;
-  }
-  body::after {
-    content:''; position:fixed; inset:0;
-    background-image: linear-gradient(rgba(0,212,255,0.02) 1px,transparent 1px),
-                      linear-gradient(90deg,rgba(0,212,255,0.02) 1px,transparent 1px);
-    background-size:48px 48px; pointer-events:none; z-index:0;
-  }
-  .wrap { max-width:1160px; margin:0 auto; padding:32px 20px; position:relative; z-index:1; }
+:root {
+  --bg:#07070f;--surface:#0d0d18;--surface2:#13131f;--border:#1c1c2c;
+  --leader:#f4c430;--architect:#00d4ff;--coder:#a78bfa;
+  --tester:#fb923c;--reviewer:#34d399;--documenter:#f472b6;
+  --text:#dde1f0;--text-dim:#4a4a65;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans SC',sans-serif;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;
+  background:radial-gradient(ellipse 55% 35% at 10% 0%,rgba(244,196,48,0.05) 0%,transparent 55%),
+             radial-gradient(ellipse 45% 30% at 90% 100%,rgba(52,211,153,0.04) 0%,transparent 55%),
+             radial-gradient(ellipse 40% 40% at 50% 50%,rgba(167,139,250,0.02) 0%,transparent 70%);
+  pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,0.012) 1px,transparent 1px);
+  background-size:44px 44px;pointer-events:none;z-index:0;}
+.wrap{max-width:1280px;margin:0 auto;padding:28px 20px 56px;position:relative;z-index:1;}
 
-  /* HEADER */
-  header { display:flex; align-items:center; justify-content:space-between; padding-bottom:24px; margin-bottom:32px; border-bottom:1px solid var(--border); }
-  .h-title { font-family:'Space Mono',monospace; font-size:18px; font-weight:700; letter-spacing:0.08em; }
-  .h-title em { color:var(--leader); font-style:normal; }
-  .h-sub { font-size:12px; color:var(--text-dim); margin-top:4px; font-weight:300; }
-  .live-pill { display:flex; align-items:center; gap:8px; padding:6px 16px; border-radius:100px; background:rgba(244,196,48,0.08); border:1px solid rgba(244,196,48,0.2); font-family:'Space Mono',monospace; font-size:11px; color:var(--leader); letter-spacing:0.12em; }
-  .live-dot { width:6px; height:6px; border-radius:50%; background:var(--leader); animation:blink 1.4s ease-in-out infinite; }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+header{display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:22px;margin-bottom:28px;border-bottom:1px solid var(--border);}
+.h-eyebrow{font-family:'Space Mono',monospace;font-size:10px;color:var(--text-dim);
+  letter-spacing:0.18em;text-transform:uppercase;margin-bottom:6px;}
+.h-title{font-family:'Space Mono',monospace;font-size:22px;font-weight:700;letter-spacing:0.06em;}
+.h-title span{color:var(--leader);}
+.h-sub{font-size:12px;color:var(--text-dim);margin-top:5px;font-weight:300;}
+.h-right{display:flex;align-items:center;gap:14px;}
+.conn-tag{font-family:'Space Mono',monospace;font-size:10px;color:var(--text-dim);letter-spacing:0.06em;}
+.live-pill{display:flex;align-items:center;gap:7px;padding:5px 14px;border-radius:100px;
+  background:rgba(244,196,48,0.07);border:1px solid rgba(244,196,48,0.18);
+  font-family:'Space Mono',monospace;font-size:10px;color:var(--leader);letter-spacing:0.14em;}
+.live-dot{width:5px;height:5px;border-radius:50%;background:currentColor;animation:blink 1.4s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.25}}
 
-  /* AGENT CARDS */
-  .agents { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:20px; }
-  .acard { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px 20px; position:relative; overflow:hidden; transition:border-color 0.3s; }
-  .acard::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; }
-  .acard.leader::before   { background:var(--leader); }
-  .acard.coder::before    { background:var(--coder); }
-  .acard.reviewer::before { background:var(--reviewer); }
-  .acard.active { border-color:rgba(0,212,255,0.25); box-shadow:0 0 24px rgba(0,212,255,0.04); }
-  .acard-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
-  .aname { font-family:'Space Mono',monospace; font-size:12px; font-weight:700; letter-spacing:0.08em; }
-  .acard.leader   .aname { color:var(--leader); }
-  .acard.coder    .aname { color:var(--coder); }
-  .acard.reviewer .aname { color:var(--reviewer); }
-  .abadge { font-size:10px; padding:3px 10px; border-radius:100px; font-weight:500; }
-  .b-idle    { background:rgba(85,85,112,0.15);  color:var(--text-dim); border:1px solid rgba(85,85,112,0.2); }
-  .b-working { background:rgba(0,212,255,0.1);   color:var(--coder);    border:1px solid rgba(0,212,255,0.2); }
-  .b-waiting { background:rgba(244,196,48,0.1);  color:var(--leader);   border:1px solid rgba(244,196,48,0.2); }
-  .b-done    { background:rgba(52,211,153,0.1);  color:var(--reviewer); border:1px solid rgba(52,211,153,0.2); }
-  .b-failed  { background:rgba(239,68,68,0.1);   color:#ef4444;         border:1px solid rgba(239,68,68,0.2); }
-  .arole { font-size:11px; color:var(--text-dim); margin-bottom:10px; font-weight:300; }
-  .acur  { font-size:12px; color:var(--text); line-height:1.6; min-height:36px; font-weight:300; }
-  .afoot { display:flex; gap:18px; margin-top:14px; padding-top:12px; border-top:1px solid var(--border); }
-  .astat-val   { font-family:'Space Mono',monospace; font-size:20px; font-weight:700; }
-  .astat-label { font-size:9px; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.1em; margin-top:1px; }
+.agents{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:16px;}
+.acard{background:var(--surface);border:1px solid var(--border);border-radius:10px;
+  padding:14px 16px;position:relative;overflow:hidden;transition:border-color 0.4s,box-shadow 0.4s;}
+.acard::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;opacity:0.8;}
+.acard.leader::before    {background:var(--leader);}
+.acard.architect::before {background:var(--architect);}
+.acard.coder::before     {background:var(--coder);}
+.acard.tester::before    {background:var(--tester);}
+.acard.reviewer::before  {background:var(--reviewer);}
+.acard.documenter::before{background:var(--documenter);}
+.acard.is-active{box-shadow:0 0 20px rgba(255,255,255,0.03);}
+.acard.leader.is-active    {border-color:rgba(244,196,48,0.25);}
+.acard.architect.is-active {border-color:rgba(0,212,255,0.25);}
+.acard.coder.is-active     {border-color:rgba(167,139,250,0.25);}
+.acard.tester.is-active    {border-color:rgba(251,146,60,0.25);}
+.acard.reviewer.is-active  {border-color:rgba(52,211,153,0.25);}
+.acard.documenter.is-active{border-color:rgba(244,114,182,0.25);}
 
-  /* MISSION */
-  .mission { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:22px 24px; margin-bottom:20px; }
-  .sec-label { font-family:'Space Mono',monospace; font-size:10px; color:var(--text-dim); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:14px; }
-  .m-title { font-size:17px; font-weight:500; margin-bottom:16px; }
-  .prog-bar  { height:3px; background:var(--border); border-radius:2px; overflow:hidden; margin-bottom:7px; }
-  .prog-fill { height:100%; border-radius:2px; background:linear-gradient(90deg,var(--leader),var(--coder)); transition:width 0.7s ease; }
-  .prog-meta { display:flex; justify-content:space-between; font-size:10px; color:var(--text-dim); font-family:'Space Mono',monospace; }
-  .steps-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:18px; }
-  .step { display:flex; align-items:center; gap:6px; padding:5px 11px; border-radius:6px; font-size:11px; font-family:'Space Mono',monospace; border:1px solid var(--border); color:var(--text-dim); background:var(--surface2); }
-  .step.running   { color:var(--coder);    border-color:rgba(0,212,255,0.3);  background:rgba(0,212,255,0.05); }
-  .step.succeeded { color:var(--reviewer); border-color:rgba(52,211,153,0.3); background:rgba(52,211,153,0.05); }
-  .step.failed    { color:#ef4444;         border-color:rgba(239,68,68,0.3);  background:rgba(239,68,68,0.05); }
-  .step-dot { width:5px; height:5px; border-radius:50%; background:currentColor; }
-  .step.running .step-dot { animation:blink 1s infinite; }
+.card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.agent-id{font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.12em;}
+.acard.leader .agent-id    {color:var(--leader);}
+.acard.architect .agent-id {color:var(--architect);}
+.acard.coder .agent-id     {color:var(--coder);}
+.acard.tester .agent-id    {color:var(--tester);}
+.acard.reviewer .agent-id  {color:var(--reviewer);}
+.acard.documenter .agent-id{color:var(--documenter);}
 
-  /* TWO COL */
-  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-  .panel { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px 20px; height:380px; display:flex; flex-direction:column; }
-  .scroll-list { flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:10px; }
-  .scroll-list::-webkit-scrollbar { width:2px; }
-  .scroll-list::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
+.badge{font-size:9px;padding:2px 7px;border-radius:100px;font-weight:500;letter-spacing:0.03em;}
+.b-working{background:rgba(0,212,255,0.1);color:#00d4ff;border:1px solid rgba(0,212,255,0.2);}
+.b-done{background:rgba(52,211,153,0.1);color:#34d399;border:1px solid rgba(52,211,153,0.2);}
+.b-waiting{background:rgba(244,196,48,0.1);color:#f4c430;border:1px solid rgba(244,196,48,0.2);}
+.b-failed{background:rgba(248,113,113,0.1);color:#f87171;border:1px solid rgba(248,113,113,0.2);}
+.b-idle{background:rgba(74,74,101,0.15);color:var(--text-dim);border:1px solid rgba(74,74,101,0.2);}
 
-  /* MESSAGES */
-  .msg { display:flex; gap:10px; animation:fadeUp 0.25s ease; }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
-  .av { width:26px; height:26px; border-radius:6px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-family:'Space Mono',monospace; font-size:10px; font-weight:700; }
-  .av.leader   { background:rgba(244,196,48,0.12); color:var(--leader); }
-  .av.coder    { background:rgba(0,212,255,0.10);  color:var(--coder); }
-  .av.reviewer { background:rgba(52,211,153,0.10); color:var(--reviewer); }
-  .av.system   { background:rgba(85,85,112,0.15);  color:var(--text-dim); }
-  .msg-inner { flex:1; }
-  .msg-top   { display:flex; align-items:center; gap:8px; margin-bottom:3px; }
-  .mname { font-family:'Space Mono',monospace; font-size:11px; font-weight:700; }
-  .mname.leader   { color:var(--leader); }
-  .mname.coder    { color:var(--coder); }
-  .mname.reviewer { color:var(--reviewer); }
-  .mname.system   { color:var(--text-dim); }
-  .mtime { font-size:10px; color:var(--text-dim); font-family:'Space Mono',monospace; }
-  .mtext { font-size:12px; color:var(--text); line-height:1.65; font-weight:300; }
+.agent-role{font-size:10px;color:var(--text-dim);font-weight:300;margin-bottom:8px;line-height:1.4;}
+.agent-msg{font-size:11px;color:var(--text);font-weight:300;line-height:1.5;min-height:32px;word-break:break-word;}
+.agent-cnt{margin-top:10px;padding-top:8px;border-top:1px solid var(--border);
+  font-family:'Space Mono',monospace;font-size:9px;color:var(--text-dim);letter-spacing:0.06em;}
+.agent-cnt span{font-size:16px;color:var(--text);font-weight:700;margin-right:3px;}
 
-  /* EVENTS */
-  .ev { display:flex; align-items:flex-start; gap:9px; padding:7px 0; border-bottom:1px solid var(--border); animation:fadeUp 0.25s ease; }
-  .ev:last-child { border-bottom:none; }
-  .ev-dot { width:5px; height:5px; border-radius:50%; margin-top:5px; flex-shrink:0; }
-  .ev-dot.approved  { background:var(--leader); }
-  .ev-dot.running   { background:var(--coder); }
-  .ev-dot.succeeded { background:var(--reviewer); }
-  .ev-dot.failed    { background:#ef4444; }
-  .ev-dot.default   { background:var(--text-dim); }
-  .ev-text { font-size:11px; color:var(--text-dim); line-height:1.5; font-weight:300; flex:1; }
-  .ev-text strong { color:var(--text); font-weight:500; }
-  .ev-time { font-size:10px; color:var(--text-dim); font-family:'Space Mono',monospace; flex-shrink:0; }
+.two-col{display:grid;grid-template-columns:3fr 2fr;gap:12px;}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:10px;
+  padding:18px 20px;display:flex;flex-direction:column;height:440px;}
+.panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-shrink:0;}
+.panel-title{font-family:'Space Mono',monospace;font-size:9px;color:var(--text-dim);letter-spacing:0.16em;text-transform:uppercase;}
+.panel-badge{font-family:'Space Mono',monospace;font-size:9px;color:var(--text-dim);
+  background:var(--surface2);border:1px solid var(--border);border-radius:100px;padding:2px 8px;}
+.scroll{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;}
+.scroll::-webkit-scrollbar{width:2px;}
+.scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:1px;}
 
-  /* EMPTY */
-  .empty { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color:var(--text-dim); font-size:12px; gap:8px; font-weight:300; }
-  .empty-ico { font-size:22px; opacity:0.35; }
+.msg{display:flex;gap:9px;animation:up 0.3s ease;}
+@keyframes up{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.avt{width:24px;height:24px;border-radius:5px;flex-shrink:0;margin-top:1px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Space Mono',monospace;font-size:8px;font-weight:700;}
+.avt.leader    {background:rgba(244,196,48,0.12);color:var(--leader);}
+.avt.architect {background:rgba(0,212,255,0.10);color:var(--architect);}
+.avt.coder     {background:rgba(167,139,250,0.12);color:var(--coder);}
+.avt.tester    {background:rgba(251,146,60,0.12);color:var(--tester);}
+.avt.reviewer  {background:rgba(52,211,153,0.10);color:var(--reviewer);}
+.avt.documenter{background:rgba(244,114,182,0.12);color:var(--documenter);}
+.avt.system    {background:rgba(74,74,101,0.15);color:var(--text-dim);}
+.msg-body{flex:1;}
+.msg-meta{display:flex;align-items:center;gap:7px;margin-bottom:2px;}
+.msg-name{font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.06em;}
+.msg-name.leader    {color:var(--leader);}
+.msg-name.architect {color:var(--architect);}
+.msg-name.coder     {color:var(--coder);}
+.msg-name.tester    {color:var(--tester);}
+.msg-name.reviewer  {color:var(--reviewer);}
+.msg-name.documenter{color:var(--documenter);}
+.msg-name.system    {color:var(--text-dim);}
+.msg-time{font-size:9px;color:var(--text-dim);font-family:'Space Mono',monospace;}
+.msg-text{font-size:12px;color:var(--text);line-height:1.6;font-weight:300;}
 
-  /* MODAL */
-  .overlay { position:fixed; inset:0; background:rgba(0,0,0,0.88); display:flex; align-items:center; justify-content:center; z-index:100; backdrop-filter:blur(6px); }
-  .modal { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:36px; width:460px; max-width:92vw; }
-  .modal h2 { font-family:'Space Mono',monospace; font-size:15px; color:var(--text); margin-bottom:8px; }
-  .modal p  { font-size:12px; color:var(--text-dim); margin-bottom:22px; line-height:1.65; font-weight:300; }
-  .fg { margin-bottom:14px; }
-  .fg label { display:block; font-size:10px; color:var(--text-dim); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:5px; font-family:'Space Mono',monospace; }
-  .fg input { width:100%; background:var(--surface2); border:1px solid var(--border); border-radius:7px; padding:9px 13px; color:var(--text); font-size:12px; font-family:'Space Mono',monospace; outline:none; transition:border-color 0.2s; }
-  .fg input:focus { border-color:var(--leader); }
-  .btn-p { width:100%; background:var(--leader); color:#000; border:none; border-radius:7px; padding:11px; font-size:13px; font-weight:700; font-family:'Space Mono',monospace; cursor:pointer; margin-top:6px; letter-spacing:0.05em; transition:opacity 0.2s; }
-  .btn-p:hover { opacity:0.85; }
-  .btn-g { width:100%; background:transparent; color:var(--text-dim); border:1px solid var(--border); border-radius:7px; padding:9px; font-size:11px; font-family:'Space Mono',monospace; cursor:pointer; margin-top:8px; transition:color 0.2s,border-color 0.2s; }
-  .btn-g:hover { color:var(--text); border-color:var(--text-dim); }
+.ev{display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:1px solid var(--border);animation:up 0.3s ease;}
+.ev:last-child{border-bottom:none;}
+.ev-dot{width:5px;height:5px;border-radius:50%;margin-top:4px;flex-shrink:0;}
+.ev-dot.working{background:var(--architect);}
+.ev-dot.done{background:var(--reviewer);}
+.ev-dot.failed{background:#f87171;}
+.ev-dot.waiting{background:var(--leader);}
+.ev-dot.default{background:var(--text-dim);}
+.ev-body{flex:1;}
+.ev-text{font-size:11px;color:var(--text-dim);line-height:1.5;font-weight:300;}
+.ev-text strong{color:var(--text);font-weight:500;}
+.ev-time{font-size:9px;color:var(--text-dim);font-family:'Space Mono',monospace;flex-shrink:0;margin-top:1px;}
 
-  @media(max-width:720px) { .agents{grid-template-columns:1fr} .two-col{grid-template-columns:1fr} }
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  height:100%;color:var(--text-dim);font-size:12px;gap:8px;font-weight:300;opacity:0.6;}
+.empty-icon{font-size:22px;}
 </style>
 </head>
 <body>
-
-<div class="overlay" id="modal">
-  <div class="modal">
-    <h2>连接 Supabase</h2>
-    <p>输入你的 Supabase 项目信息，页面将实时显示 AI 团队的工作状态。密钥仅在你的浏览器本地使用。</p>
-    <div class="fg"><label>Project URL</label><input id="iUrl" placeholder="https://xxxxx.supabase.co"></div>
-    <div class="fg"><label>Anon Key</label><input id="iKey" placeholder="eyJhbGciOiJIUzI1NiIs..."></div>
-    <button class="btn-p" onclick="connect()">连接并开始监控</button>
-    <button class="btn-g" onclick="demo()">使用演示数据预览效果</button>
-  </div>
-</div>
-
 <div class="wrap">
   <header>
     <div>
-      <div class="h-title">AI DEV TEAM <em>//</em> LIVE</div>
-      <div class="h-sub" id="hsub">AI 开发团队实时工作台</div>
+      <div class="h-eyebrow">Multi-Agent Development System</div>
+      <div class="h-title">AI DEV TEAM <span>·</span> LIVE</div>
+      <div class="h-sub" id="subline">正在连接...</div>
     </div>
-    <div class="live-pill"><div class="live-dot"></div><span id="llabel">LIVE</span></div>
+    <div class="h-right">
+      <span class="conn-tag" id="connTag"></span>
+      <div class="live-pill"><div class="live-dot"></div><span>LIVE</span></div>
+    </div>
   </header>
 
   <div class="agents">
     <div class="acard leader" id="card-leader">
-      <div class="acard-top"><span class="aname">LEADER</span><span class="abadge b-idle" id="badge-leader">待机</span></div>
-      <div class="arole">任务分配 · 进度协调 · 决策</div>
-      <div class="acur" id="cur-leader">等待任务...</div>
-      <div class="afoot"><div><div class="astat-val" id="cnt-leader">0</div><div class="astat-label">消息数</div></div></div>
+      <div class="card-top"><span class="agent-id">LEADER</span><span class="badge b-idle" id="badge-leader">待机</span></div>
+      <div class="agent-role">任务分配 · 进度把控 · 最终验收</div>
+      <div class="agent-msg" id="msg-leader">等待任务...</div>
+      <div class="agent-cnt"><span id="cnt-leader">0</span>条</div>
+    </div>
+    <div class="acard architect" id="card-architect">
+      <div class="card-top"><span class="agent-id">ARCHITECT</span><span class="badge b-idle" id="badge-architect">待机</span></div>
+      <div class="agent-role">需求分析 · 方案设计 · 技术选型</div>
+      <div class="agent-msg" id="msg-architect">等待任务...</div>
+      <div class="agent-cnt"><span id="cnt-architect">0</span>条</div>
     </div>
     <div class="acard coder" id="card-coder">
-      <div class="acard-top"><span class="aname">CODER</span><span class="abadge b-idle" id="badge-coder">待机</span></div>
-      <div class="arole">功能实现 · 代码编写 · 测试</div>
-      <div class="acur" id="cur-coder">等待任务...</div>
-      <div class="afoot"><div><div class="astat-val" id="cnt-coder">0</div><div class="astat-label">消息数</div></div></div>
+      <div class="card-top"><span class="agent-id">CODER</span><span class="badge b-idle" id="badge-coder">待机</span></div>
+      <div class="agent-role">功能实现 · 代码编写 · Bug修复</div>
+      <div class="agent-msg" id="msg-coder">等待任务...</div>
+      <div class="agent-cnt"><span id="cnt-coder">0</span>条</div>
+    </div>
+    <div class="acard tester" id="card-tester">
+      <div class="card-top"><span class="agent-id">TESTER</span><span class="badge b-idle" id="badge-tester">待机</span></div>
+      <div class="agent-role">测试用例 · Bug追踪 · 质量验证</div>
+      <div class="agent-msg" id="msg-tester">等待任务...</div>
+      <div class="agent-cnt"><span id="cnt-tester">0</span>条</div>
     </div>
     <div class="acard reviewer" id="card-reviewer">
-      <div class="acard-top"><span class="aname">REVIEWER</span><span class="abadge b-idle" id="badge-reviewer">待机</span></div>
-      <div class="arole">代码审查 · 安全检查 · 质量</div>
-      <div class="acur" id="cur-reviewer">等待任务...</div>
-      <div class="afoot"><div><div class="astat-val" id="cnt-reviewer">0</div><div class="astat-label">消息数</div></div></div>
+      <div class="card-top"><span class="agent-id">REVIEWER</span><span class="badge b-idle" id="badge-reviewer">待机</span></div>
+      <div class="agent-role">代码审查 · 安全检测 · 规范把控</div>
+      <div class="agent-msg" id="msg-reviewer">等待任务...</div>
+      <div class="agent-cnt"><span id="cnt-reviewer">0</span>条</div>
     </div>
-  </div>
-
-  <div class="mission">
-    <div class="sec-label">当前任务</div>
-    <div class="m-title" id="mTitle">暂无进行中的任务</div>
-    <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
-    <div class="prog-meta"><span id="progLabel">0 / 0 步骤完成</span><span id="progPct">0%</span></div>
-    <div class="steps-row" id="stepsRow"></div>
+    <div class="acard documenter" id="card-documenter">
+      <div class="card-top"><span class="agent-id">DOCUMENTER</span><span class="badge b-idle" id="badge-documenter">待机</span></div>
+      <div class="agent-role">API文档 · 使用说明 · 接口规范</div>
+      <div class="agent-msg" id="msg-documenter">等待任务...</div>
+      <div class="agent-cnt"><span id="cnt-documenter">0</span>条</div>
+    </div>
   </div>
 
   <div class="two-col">
     <div class="panel">
-      <div class="sec-label" style="margin-bottom:12px">Agent 实时对话</div>
-      <div class="scroll-list" id="msgList">
-        <div class="empty"><div class="empty-ico">💬</div><span>等待 Agent 发言...</span></div>
+      <div class="panel-head">
+        <span class="panel-title">Agent 实时对话</span>
+        <span class="panel-badge" id="msgCount">0 条</span>
+      </div>
+      <div class="scroll" id="msgList">
+        <div class="empty"><div class="empty-icon">💬</div><span>等待 Agent 发言...</span></div>
       </div>
     </div>
     <div class="panel">
-      <div class="sec-label" style="margin-bottom:12px">系统事件日志</div>
-      <div class="scroll-list" id="evList">
-        <div class="empty"><div class="empty-ico">📋</div><span>等待事件...</span></div>
+      <div class="panel-head">
+        <span class="panel-title">系统事件日志</span>
+        <span class="panel-badge" id="evCount">0 条</span>
+      </div>
+      <div class="scroll" id="evList">
+        <div class="empty"><div class="empty-icon">📋</div><span>等待事件...</span></div>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-const AGENTS = ['leader','coder','reviewer'];
-const AV     = { leader:'LDR', coder:'COD', reviewer:'REV', system:'SYS' };
-const ROLES  = { leader:'Leader', coder:'Coder', reviewer:'Reviewer', system:'System' };
-const COUNTS = { leader:0, coder:0, reviewer:0 };
-let sb = null;
+// ═══════════════════════════════
+//  填入你的 Supabase 连接信息
+// ═══════════════════════════════
+const SUPABASE_URL = 'https://lhelanznacgcrjwdswtt.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_640vqUptIUK4vDkyN6coIA_tQz267UM';
+// ═══════════════════════════════
 
-async function connect() {
-  const url = document.getElementById('iUrl').value.trim();
-  const key = document.getElementById('iKey').value.trim();
-  if (!url||!key) { alert('请填写完整信息'); return; }
-  sb = supabase.createClient(url, key);
-  document.getElementById('modal').style.display = 'none';
-  document.getElementById('hsub').textContent = '已连接 · 实时监控中';
-  await loadData();
-  subscribe();
+const AGENTS = ['leader','architect','coder','tester','reviewer','documenter'];
+const AVT = {leader:'LDR',architect:'ARC',coder:'COD',tester:'TST',reviewer:'REV',documenter:'DOC',system:'SYS'};
+let msgTotal = 0, evTotal = 0;
+
+function fmt(iso) {
+  return new Date(iso).toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
 }
 
-async function loadData() {
-  const { data:missions } = await sb.from('dev_missions').select('*, dev_steps(*)')
-    .eq('status','running').order('created_at',{ascending:false}).limit(1);
-  if (missions?.length) renderMission(missions[0]);
-
-  const { data:events } = await sb.from('dev_events').select('*')
-    .order('created_at',{ascending:false}).limit(40);
-  if (events) {
-    events.filter(e=>e.event_type==='agent_message').reverse().forEach(addMsg);
-    events.filter(e=>e.event_type!=='agent_message').reverse().forEach(addEv);
-  }
+function badgeInfo(status) {
+  return ({working:['b-working','工作中'],done:['b-done','已完成'],
+           waiting:['b-waiting','等待中'],failed:['b-failed','失败']})[status] || ['b-idle','待机'];
 }
 
-function subscribe() {
-  sb.channel('team-live')
-    .on('postgres_changes',{event:'INSERT',schema:'public',table:'dev_events'},p=>{
-      const e=p.new;
-      if (e.event_type==='agent_message') addMsg(e); else addEv(e);
-      syncAgent(e);
-    })
-    .on('postgres_changes',{event:'*',schema:'public',table:'dev_steps'},()=>refreshMission())
-    .on('postgres_changes',{event:'INSERT',schema:'public',table:'dev_missions'},p=>renderMission(p.new))
-    .subscribe();
+function updateCard(agent, message, status) {
+  if (!AGENTS.includes(agent)) return;
+  const [cls, label] = badgeInfo(status);
+  const badge = document.getElementById(`badge-${agent}`);
+  badge.className = `badge ${cls}`;
+  badge.textContent = label;
+  if (message) document.getElementById(`msg-${agent}`).textContent = message;
+  document.getElementById(`card-${agent}`).classList.toggle('is-active', status === 'working');
+  const cnt = document.getElementById(`cnt-${agent}`);
+  cnt.textContent = parseInt(cnt.textContent || 0) + 1;
 }
 
-async function refreshMission() {
-  const { data } = await sb.from('dev_missions').select('*, dev_steps(*)')
-    .eq('status','running').order('created_at',{ascending:false}).limit(1);
-  if (data?.length) renderMission(data[0]);
-}
-
-function renderMission(m) {
-  document.getElementById('mTitle').textContent = m.title||'未命名任务';
-  const steps = m.dev_steps||[];
-  const done  = steps.filter(s=>s.status==='succeeded').length;
-  const total = steps.length;
-  const pct   = total ? Math.round(done/total*100) : 0;
-  document.getElementById('progFill').style.width  = pct+'%';
-  document.getElementById('progLabel').textContent = `${done} / ${total} 步骤完成`;
-  document.getElementById('progPct').textContent   = pct+'%';
-  const row = document.getElementById('stepsRow');
-  row.innerHTML = '';
-  steps.forEach(s=>{
-    const d = document.createElement('div');
-    const st = ['running','succeeded','failed'].includes(s.status) ? s.status : '';
-    d.className = 'step '+st;
-    const lbl = {queued:'排队中',running:'执行中',succeeded:'已完成',failed:'失败'};
-    d.innerHTML = `<div class="step-dot"></div>${s.step_kind} · ${lbl[s.status]||s.status}`;
-    row.appendChild(d);
-  });
-  steps.forEach(s=>{
-    const a = s.assigned_to;
-    if (!AGENTS.includes(a)) return;
-    const badge = document.getElementById('badge-'+a);
-    const cur   = document.getElementById('cur-'+a);
-    const card  = document.getElementById('card-'+a);
-    if (s.status==='running') {
-      badge.className='abadge b-working'; badge.textContent='工作中';
-      cur.textContent = s.step_kind+' · 执行中...'; card.classList.add('active');
-    } else if (s.status==='succeeded') {
-      badge.className='abadge b-done'; badge.textContent='已完成';
-      cur.textContent = s.step_kind+' · ✓ 完成'; card.classList.remove('active');
-    }
-  });
-}
-
-function addMsg(e) {
+function addMsg(event) {
   const list = document.getElementById('msgList');
-  list.querySelector('.empty')?.remove();
-  const p     = e.payload||{};
-  const agent = e.agent||'system';
-  const time  = new Date(e.created_at).toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'});
+  const empty = list.querySelector('.empty');
+  if (empty) empty.remove();
+  const agent = event.agent || 'system';
+  const p = event.payload || {};
+  const message = p.message || (typeof event.payload === 'string' ? event.payload : JSON.stringify(p));
   const el = document.createElement('div');
   el.className = 'msg';
   el.innerHTML = `
-    <div class="av ${agent}">${AV[agent]||'???'}</div>
-    <div class="msg-inner">
-      <div class="msg-top">
-        <span class="mname ${agent}">${ROLES[agent]||agent}</span>
-        <span class="mtime">${time}</span>
+    <div class="avt ${agent}">${AVT[agent]||'SYS'}</div>
+    <div class="msg-body">
+      <div class="msg-meta">
+        <span class="msg-name ${agent}">${agent.toUpperCase()}</span>
+        <span class="msg-time">${fmt(event.created_at)}</span>
       </div>
-      <div class="mtext">${p.message||JSON.stringify(p)}</div>
+      <div class="msg-text">${message}</div>
     </div>`;
   list.appendChild(el);
   list.scrollTop = list.scrollHeight;
-  if (AGENTS.includes(agent)) {
-    COUNTS[agent]++;
-    document.getElementById('cnt-'+agent).textContent = COUNTS[agent];
-  }
+  msgTotal++;
+  document.getElementById('msgCount').textContent = `${msgTotal} 条`;
+  updateCard(agent, message, p.status || 'working');
 }
 
-function addEv(e) {
+function addEv(event) {
   const list = document.getElementById('evList');
-  list.querySelector('.empty')?.remove();
-  const time = new Date(e.created_at).toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-  const map = {
-    proposal_approved:{cls:'approved', label:'提案通过审批'},
-    mission_started:  {cls:'running',  label:'任务开始'},
-    step_completed:   {cls:'succeeded',label:'步骤完成'},
-    mission_succeeded:{cls:'succeeded',label:'任务成功'},
-    mission_failed:   {cls:'failed',   label:'任务失败'},
-  };
-  const meta = map[e.event_type]||{cls:'default',label:e.event_type};
+  const empty = list.querySelector('.empty');
+  if (empty) empty.remove();
+  const p = event.payload || {};
+  const status = p.status || 'default';
+  const dotCls = ['working','done','failed','waiting'].includes(status) ? status : 'default';
+  const text = p.message || p.text || event.event_type;
   const el = document.createElement('div');
   el.className = 'ev';
   el.innerHTML = `
-    <div class="ev-dot ${meta.cls}"></div>
-    <div class="ev-text"><strong>${meta.label}</strong>${e.agent?' · '+e.agent:''}</div>
-    <div class="ev-time">${time}</div>`;
+    <div class="ev-dot ${dotCls}"></div>
+    <div class="ev-body"><div class="ev-text"><strong>${(event.agent||'system').toUpperCase()}</strong> · ${text}</div></div>
+    <div class="ev-time">${fmt(event.created_at)}</div>`;
   list.appendChild(el);
   list.scrollTop = list.scrollHeight;
+  evTotal++;
+  document.getElementById('evCount').textContent = `${evTotal} 条`;
 }
 
-function syncAgent(e) {
-  const a = e.agent;
-  if (!AGENTS.includes(a)) return;
-  const p = e.payload||{};
-  if (!p.status) return;
-  const badge = document.getElementById('badge-'+a);
-  const cur   = document.getElementById('cur-'+a);
-  const card  = document.getElementById('card-'+a);
-  const map = {
-    working:['b-working','工作中',true],
-    waiting:['b-waiting','等待中',false],
-    idle:   ['b-idle',   '待机',  false],
-    done:   ['b-done',   '已完成',false],
-    failed: ['b-failed', '失败',  false],
-  };
-  const [cls,label,active] = map[p.status]||['b-idle',p.status,false];
-  badge.className='abadge '+cls; badge.textContent=label;
-  if (p.message) cur.textContent = p.message;
-  active ? card.classList.add('active') : card.classList.remove('active');
+async function init() {
+  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  document.getElementById('subline').textContent = '实时监控中 · Supabase';
+  document.getElementById('connTag').textContent = 'CONNECTED';
+
+  const { data } = await sb
+    .from('dev_events')
+    .select('*')
+    .order('created_at', { ascending: false })
+    .limit(60);
+
+  if (data) {
+    [...data].reverse().forEach(e => {
+      if (e.event_type === 'agent_message') addMsg(e);
+      else addEv(e);
+    });
+  }
+
+  sb.channel('live')
+    .on('postgres_changes',{event:'INSERT',schema:'public',table:'dev_events'}, p => {
+      const e = p.new;
+      if (e.event_type === 'agent_message') addMsg(e);
+      else addEv(e);
+    })
+    .subscribe();
 }
 
-function demo() {
-  document.getElementById('modal').style.display='none';
-  document.getElementById('hsub').textContent='演示模式 · 模拟数据';
-  document.getElementById('llabel').textContent='DEMO';
-
-  renderMission({
-    title:'实现用户注册接口 POST /api/register',
-    dev_steps:[
-      {step_kind:'analyze',    assigned_to:'leader',   status:'succeeded'},
-      {step_kind:'design',     assigned_to:'leader',   status:'succeeded'},
-      {step_kind:'write_code', assigned_to:'coder',    status:'running'},
-      {step_kind:'write_tests',assigned_to:'coder',    status:'queued'},
-      {step_kind:'code_review',assigned_to:'reviewer', status:'queued'},
-    ]
-  });
-
-  const msgs = [
-    {t:400,  agent:'leader',   status:'working', message:'收到需求：用户注册接口。拆解任务——Coder 实现接口，Reviewer 负责安全审查。'},
-    {t:1800, agent:'coder',    status:'working', message:'开始实现。技术栈：Flask + bcrypt。用户名3-20位，密码6位以上，重复用户名返回400。'},
-    {t:3200, agent:'reviewer', status:'waiting', message:'收到，等待代码完成后开始审查。重点关注：密码存储、输入校验、错误信息不泄露细节。'},
-    {t:5000, agent:'coder',    status:'working', message:'核心逻辑完成。bcrypt 哈希轮数设为12，支持重复用户名检测。'},
-    {t:6800, agent:'coder',    status:'done',    message:'接口完成，本地测试通过。POST /api/register 正确返回 201，重复用户名返回 400。'},
-    {t:8200, agent:'reviewer', status:'working', message:'开始审查。① 密码哈希 ✓  ② 输入验证 ✓  ③ 建议：错误信息统一为"注册失败"，防止用户枚举攻击。'},
-    {t:9800, agent:'leader',   status:'done',    message:'审查意见已收到。Coder 按建议修改错误提示后，本次任务完成 ✓'},
-  ];
-  msgs.forEach(({t,agent,status,message})=>{
-    setTimeout(()=>{
-      addMsg({agent, created_at:new Date().toISOString(), payload:{message,status}});
-      syncAgent({agent, payload:{message,status}});
-    }, t);
-  });
-
-  const evs = [
-    {t:200,  cls:'approved',  label:'提案通过审批', agent:'system'},
-    {t:600,  cls:'running',   label:'任务开始执行', agent:'leader'},
-    {t:2000, cls:'succeeded', label:'步骤完成 · analyze', agent:'leader'},
-    {t:3500, cls:'running',   label:'开始编写代码', agent:'coder'},
-    {t:7000, cls:'succeeded', label:'步骤完成 · write_code', agent:'coder'},
-    {t:8500, cls:'running',   label:'开始代码审查', agent:'reviewer'},
-  ];
-  evs.forEach(({t,cls,label,agent})=>{
-    setTimeout(()=>{ addEv({event_type:cls, agent, created_at:new Date().toISOString()}); }, t);
-  });
-
-  setTimeout(()=>{
-    document.getElementById('progFill').style.width='40%';
-    document.getElementById('progLabel').textContent='2 / 5 步骤完成';
-    document.getElementById('progPct').textContent='40%';
-  }, 2500);
-}
+init();
 </script>
 </body>
 </html>
