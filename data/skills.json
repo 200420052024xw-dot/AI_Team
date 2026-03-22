@@ -1,0 +1,1002 @@
+[
+  {
+    "name": "self-improving-agent",
+    "description": "记录学习经验、错误与修正，实现持续改进。使用时机：(1) 命令或操作意外失败时，(2) 用户纠正……",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装self-improving-agent技能。`n`n若已安装，则直接安装self-improving-agent技能。",
+    "download_cmd": "skillhub install self-improving-agent",
+    "star": 2167,
+    "download_count": 244563,
+    "skill_id": "b411c224-3e70-4061-adb2-50e1b2a45a56",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Find Skills",
+    "description": "当用户询问\"如何做某事\"、\"寻找某技能\"或希望扩展功能时，帮助发现并安装智能体技能。适用于寻找可安装功能的场景。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装find-skills技能。`n`n若已安装，则直接安装find-skills技能。",
+    "download_cmd": "skillhub install find-skills",
+    "star": 907,
+    "download_count": 228886,
+    "skill_id": "98e220de-872b-4518-9968-f27bf08a2eb3",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Summarize",
+    "description": "使用summarize CLI总结URL或文件（支持网页、PDF、图片、音频、YouTube）。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装summarize技能。`n`n若已安装，则直接安装summarize技能。",
+    "download_cmd": "skillhub install summarize",
+    "star": 637,
+    "download_count": 173069,
+    "skill_id": "afbe7324-96f2-4c19-9975-cb236e98ade2",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Agent Browser",
+    "description": "基于Rust的快速无头浏览器自动化CLI，支持Node.js回退，允许AI代理通过结构化命令执行页面导航、点击、输入和快照操作。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装agent-browser技能。`n`n若已安装，则直接安装agent-browser技能。",
+    "download_cmd": "skillhub install agent-browser",
+    "star": 597,
+    "download_count": 142740,
+    "skill_id": "4c51055c-5a95-4f5e-a0d7-1ce390073768",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Gog",
+    "description": "Google Workspace 命令行工具，支持 Gmail、日历、云端硬盘、通讯录、表格和文档。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装gog技能。`n`n若已安装，则直接安装gog技能。",
+    "download_cmd": "skillhub install gog",
+    "star": 745,
+    "download_count": 118306,
+    "skill_id": "e98b3861-e506-44c6-8d6e-c78df092a5f4",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Github",
+    "description": "使用 `gh` CLI 与 GitHub 交互，通过 `gh issue`、`gh pr`、`gh run` 和 `gh api` 管理议题、PR、CI 运行及高级查询。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装github技能。`n`n若已安装，则直接安装github技能。",
+    "download_cmd": "skillhub install github",
+    "star": 376,
+    "download_count": 116178,
+    "skill_id": "70f6829f-f872-461a-a74b-bc81a7549704",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "ontology",
+    "description": "类型化知识图谱，用于结构化智能体记忆与可组合技能。支持创建/查询实体（人员、项目、任务、事件、文档）及关联...",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装ontology技能。`n`n若已安装，则直接安装ontology技能。",
+    "download_cmd": "skillhub install ontology",
+    "star": 290,
+    "download_count": 114320,
+    "skill_id": "c60b4200-e4d5-409b-a613-bf0c35aad3cb",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Skill Vetter",
+    "description": "AI智能体技能安全预审工具。安装ClawdHub、GitHub等来源技能前，检查风险信号、权限范围及可疑模式。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装skill-vetter技能。`n`n若已安装，则直接安装skill-vetter技能。",
+    "download_cmd": "skillhub install skill-vetter",
+    "star": 432,
+    "download_count": 111340,
+    "skill_id": "22e5e162-0b65-4978-83fd-ddf4906778b8",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Proactive Agent",
+    "description": "将AI智能体从任务执行者升级为主动预判需求、持续优化的智能伙伴。集成WAL协议、工作缓冲区、自主定时任务及实战验证模式。Hal Stack核心组件 🦞",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装proactive-agent技能。`n`n若已安装，则直接安装proactive-agent技能。",
+    "download_cmd": "skillhub install proactive-agent",
+    "star": 559,
+    "download_count": 108493,
+    "skill_id": "099b42cb-4c42-4e63-84a1-d3fd9ecd2c95",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Weather",
+    "description": "获取当前天气和预报（无需API密钥）",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装weather技能。`n`n若已安装，则直接安装weather技能。",
+    "download_cmd": "skillhub install weather",
+    "star": 295,
+    "download_count": 99598,
+    "skill_id": "43b89a38-7bda-4b2f-9151-a09b3ee0778a",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Self-Improving + Proactive Agent",
+    "description": "自我反思+自我批评+自我学习+自组织记忆。智能体评估自身工作、发现错误并持续改进。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装self-improving技能。`n`n若已安装，则直接安装self-improving技能。",
+    "download_cmd": "skillhub install self-improving",
+    "star": 390,
+    "download_count": 83312,
+    "skill_id": "6eae1e06-6f9b-4a47-a841-c6afe7e916c5",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Multi Search Engine",
+    "description": "集成17个搜索引擎（8国内+9国际），支持高级搜索语法、时间筛选、站内搜索、隐私引擎及WolframAlpha知识查询，无需API密钥。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装multi-search-engine技能。`n`n若已安装，则直接安装multi-search-engine技能。",
+    "download_cmd": "skillhub install multi-search-engine",
+    "star": 299,
+    "download_count": 63940,
+    "skill_id": "855a2714-53a1-435e-aae0-3558e2905c42",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Nano Pdf",
+    "description": "使用nano-pdf CLI通过自然语言指令编辑PDF",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装nano-pdf技能。`n`n若已安装，则直接安装nano-pdf技能。",
+    "download_cmd": "skillhub install nano-pdf",
+    "star": 148,
+    "download_count": 62853,
+    "skill_id": "0ae550f8-1670-4a50-8ac0-dc52692aa52f",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Sonoscli",
+    "description": "控制Sonos音箱（发现/状态/播放/音量/分组）",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装sonoscli技能。`n`n若已安装，则直接安装sonoscli技能。",
+    "download_cmd": "skillhub install sonoscli",
+    "star": 41,
+    "download_count": 61307,
+    "skill_id": "359df830-c438-444e-b927-e2cdfb751c76",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Humanizer",
+    "description": "消除AI写作痕迹，使文本更自然真实。基于维基百科\"AI写作特征\"指南，识别并修正夸张象征、宣传用语、肤浅-ing分析、模糊归因、破折号滥用、三项排比、AI词汇、负面平行结构及冗长连接词等模式。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装humanizer技能。`n`n若已安装，则直接安装humanizer技能。",
+    "download_cmd": "skillhub install humanizer",
+    "star": 418,
+    "download_count": 60620,
+    "skill_id": "4e055a6e-3bcf-41ac-8de8-17f6fd267425",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Notion",
+    "description": "Notion API，用于创建和管理页面、数据库及区块",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装notion技能。`n`n若已安装，则直接安装notion技能。",
+    "download_cmd": "skillhub install notion",
+    "star": 190,
+    "download_count": 59156,
+    "skill_id": "511b50f1-cee8-4726-b33e-5ac2224915bd",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Nano Banana Pro",
+    "description": "使用 Nano Banana Pro (Gemini 3 Pro Image) 生成或编辑图像。支持文生图、图生图及 1K/2K/4K 分辨率，适用于图像创建、修改及编辑请求，使用 --input-image 指定输入图像。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装nano-banana-pro技能。`n`n若已安装，则直接安装nano-banana-pro技能。",
+    "download_cmd": "skillhub install nano-banana-pro",
+    "star": 208,
+    "download_count": 55456,
+    "skill_id": "896384cd-3445-44c1-8602-b9487aa1bd0f",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Obsidian",
+    "description": "操作 Obsidian 仓库（纯 Markdown 笔记）并通过 obsidian-cli 自动化。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装obsidian技能。`n`n若已安装，则直接安装obsidian技能。",
+    "download_cmd": "skillhub install obsidian",
+    "star": 207,
+    "download_count": 54595,
+    "skill_id": "775d1ff4-cf2f-40ff-a701-d681fc73047d",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Openai Whisper",
+    "description": "本地语音转文字（Whisper CLI，无需 API 密钥）",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装openai-whisper技能。`n`n若已安装，则直接安装openai-whisper技能。",
+    "download_cmd": "skillhub install openai-whisper",
+    "star": 215,
+    "download_count": 49664,
+    "skill_id": "ba6937da-c394-4fcd-b859-7da6bc0d7620",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Auto-Updater Skill",
+    "description": "每日自动通过cron检查并更新Clawdbot及所有已安装技能，应用后向用户发送变更摘要。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装auto-updater技能。`n`n若已安装，则直接安装auto-updater技能。",
+    "download_cmd": "skillhub install auto-updater",
+    "star": 282,
+    "download_count": 49475,
+    "skill_id": "8885361a-9159-42d8-a5ef-97d2b223b0ab",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "API Gateway",
+    "description": "通过托管OAuth连接100+ API（Google Workspace、Microsoft 365、GitHub、Notion、Slack、Airtable、HubSpot等）。当用户想要...时使用此技能。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装api-gateway技能。`n`n若已安装，则直接安装api-gateway技能。",
+    "download_cmd": "skillhub install api-gateway",
+    "star": 225,
+    "download_count": 48705,
+    "skill_id": "88d31551-96d1-4b0f-9f9b-7d970a276d7d",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "baidu web search",
+    "description": "使用百度AI搜索引擎(BDSE)搜索网页，获取实时信息、文档资料或研究主题。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装baidu-search技能。`n`n若已安装，则直接安装baidu-search技能。",
+    "download_cmd": "skillhub install baidu-search",
+    "star": 112,
+    "download_count": 47926,
+    "skill_id": "7d7cfef8-c249-44a0-b939-760316afe4ed",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Skill Creator",
+    "description": "用于创建有效技能的指南。当用户希望创建新技能（或更新现有技能），以通过专业知识、工作流或工具集成扩展Claude能力时使用。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装skill-creator技能。`n`n若已安装，则直接安装skill-creator技能。",
+    "download_cmd": "skillhub install skill-creator",
+    "star": 152,
+    "download_count": 45054,
+    "skill_id": "a338118d-5ee3-4c14-9ff8-9525ba0c31d5",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Automation Workflows",
+    "description": "设计和实施自动化工作流，帮助个体创业者节省时间、扩展业务。适用于识别重复任务、跨工具搭建流程、配置触发器与动作、优化现有自动化等场景。涵盖自动化机会识别、工作流设计、工具选型（Zapier/Make/n8n）、测试与维护。触发词：automate、automation、workflow automation、save time、reduce manual work、automate my business、no-code automation。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装automation-workflows技能。`n`n若已安装，则直接安装automation-workflows技能。",
+    "download_cmd": "skillhub install automation-workflows",
+    "star": 182,
+    "download_count": 44185,
+    "skill_id": "c9480f82-7ff9-44dd-bad5-2ce114d3847a",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Brave Search",
+    "description": "通过 Brave Search API 实现网页搜索与内容提取，适用于文档、事实及各类网络内容查询。轻量级，无需浏览器。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装brave-search技能。`n`n若已安装，则直接安装brave-search技能。",
+    "download_cmd": "skillhub install brave-search",
+    "star": 151,
+    "download_count": 42558,
+    "skill_id": "e4239b8e-f540-4bd5-81d9-1e0ea92916cc",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Free Ride - Unlimited free AI",
+    "description": "为OpenClaw管理OpenRouter免费AI模型，自动按质量排序，配置限流备用方案并更新配置。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装free-ride技能。`n`n若已安装，则直接安装free-ride技能。",
+    "download_cmd": "skillhub install free-ride",
+    "star": 277,
+    "download_count": 39521,
+    "skill_id": "020dd8a0-fe33-4cc5-a695-fd3fd2f3c2db",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Mcporter",
+    "description": "使用 mcporter CLI 直接列出、配置、认证和调用 MCP 服务器/工具（HTTP 或 stdio），支持临时服务器、配置编辑及 CLI/类型生成。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装mcporter技能。`n`n若已安装，则直接安装mcporter技能。",
+    "download_cmd": "skillhub install mcporter",
+    "star": 115,
+    "download_count": 39134,
+    "skill_id": "e4d06953-1fb7-4217-8e8d-658be009753b",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Tavily 搜索",
+    "description": "通过 Tavily API 搜索网页（Brave 替代方案）。当用户需要搜索网络、查找来源或链接且 Brave 不可用时使用。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装openclaw-tavily-search技能。`n`n若已安装，则直接安装openclaw-tavily-search技能。",
+    "download_cmd": "skillhub install openclaw-tavily-search",
+    "star": 77,
+    "download_count": 38593,
+    "skill_id": "0fec0e64-8747-4b2a-8406-dbb04252d369",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "video-generator-seedance",
+    "description": "使用火山引擎 SD1.5pro API 生成视频。支持文本到视频和图生视频，异步处理任务。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装video-generator-seedance技能。`n`n若已安装，则直接安装video-generator-seedance技能。",
+    "download_cmd": "skillhub install video-generator-seedance",
+    "star": 1,
+    "download_count": 36711,
+    "skill_id": "9f7e804a-8d07-4930-b0d8-b2f84be75f55",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Stock Analysis",
+    "description": "基于Yahoo Finance数据分析股票与加密货币。支持投资组合管理、预警观察列表、股息分析及八维股票评分；具备病毒趋势检测(Hot Scanner)与谣言早期信号捕捉功能。适用于股票分析、持仓追踪、财报反应、加密货币监控、热门股追踪及提前发现市场传闻。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装stock-analysis技能。`n`n若已安装，则直接安装stock-analysis技能。",
+    "download_cmd": "skillhub install stock-analysis",
+    "star": 164,
+    "download_count": 35089,
+    "skill_id": "5f9e898e-1499-40f8-8e58-ccd734c396ca",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Elite Longterm Memory",
+    "description": "Cursor/Claude/ChatGPT/Copilot终极AI记忆系统：WAL协议+向量搜索+Git笔记+云端备份，上下文永续，Vibe编码就绪。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装elite-longterm-memory技能。`n`n若已安装，则直接安装elite-longterm-memory技能。",
+    "download_cmd": "skillhub install elite-longterm-memory",
+    "star": 133,
+    "download_count": 34347,
+    "skill_id": "41e6ffe9-f070-4da6-b14a-876175b6b109",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "OpenClaw YouTube Transcript",
+    "description": "使用 yt-dlp 直接从 YouTube 视频链接提取字幕文本，无需音频处理。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装openclaw-youtube-transcript技能。`n`n若已安装，则直接安装openclaw-youtube-transcript技能。",
+    "download_cmd": "skillhub install openclaw-youtube-transcript",
+    "star": 23,
+    "download_count": 33860,
+    "skill_id": "347fc1d1-297b-4360-ab58-2bf0ee271380",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Desktop Control",
+    "description": "高级桌面自动化，支持鼠标、键盘和屏幕控制",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装desktop-control技能。`n`n若已安装，则直接安装desktop-control技能。",
+    "download_cmd": "skillhub install desktop-control",
+    "star": 215,
+    "download_count": 33292,
+    "skill_id": "000002d9-96d9-4084-81eb-648a0551b496",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Humanize AI text",
+    "description": "将ChatGPT、Claude等AI生成文本改写为自然人工内容，绕过GPTZero等检测器，实现去AI化。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装humanize-ai-text技能。`n`n若已安装，则直接安装humanize-ai-text技能。",
+    "download_cmd": "skillhub install humanize-ai-text",
+    "star": 144,
+    "download_count": 33032,
+    "skill_id": "f16a4bb3-8599-4e38-9db4-02a646d8c90e",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "YouTube Watcher",
+    "description": "获取YouTube视频字幕，用于总结视频、回答内容问题或提取信息。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装youtube-watcher技能。`n`n若已安装，则直接安装youtube-watcher技能。",
+    "download_cmd": "skillhub install youtube-watcher",
+    "star": 218,
+    "download_count": 32832,
+    "skill_id": "cb2c3859-89f3-4644-9276-0563f52eb14a",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Outlook Graph",
+    "description": "使用预提供的访问令牌将 OpenClaw 连接到 Outlook 和 Microsoft Graph，以执行邮件、日历、联系人和文件夹操作。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装outlook-graph技能。`n`n若已安装，则直接安装outlook-graph技能。",
+    "download_cmd": "skillhub install outlook-graph",
+    "star": 4,
+    "download_count": 32159,
+    "skill_id": "e97bfb75-cad3-4fbf-967e-904306505d33",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "ByteRover",
+    "description": "工作前必须使用此工具收集上下文。专为AI代理设计的知识管理工具，使用`brv`存储和检索项目模式...",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装byterover技能。`n`n若已安装，则直接安装byterover技能。",
+    "download_cmd": "skillhub install byterover",
+    "star": 98,
+    "download_count": 31846,
+    "skill_id": "5a7cf70a-839e-43b0-b2bd-9c5317a7103e",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Clawdbot Documentation Expert",
+    "description": "Clawdbot文档专家，支持决策树导航、搜索脚本、文档获取、版本追踪及配置片段，涵盖所有功能",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装clawddocs技能。`n`n若已安装，则直接安装clawddocs技能。",
+    "download_cmd": "skillhub install clawddocs",
+    "star": 256,
+    "download_count": 30875,
+    "skill_id": "2a2dd677-1067-4428-adc5-bcb4868c4a95",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Slack",
+    "description": "通过Clawdbot的Slack工具控制Slack时使用，支持在频道或私信中为消息添加表情反应、置顶或取消置顶内容。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装slack技能。`n`n若已安装，则直接安装slack技能。",
+    "download_cmd": "skillhub install slack",
+    "star": 92,
+    "download_count": 29329,
+    "skill_id": "89bb17ca-9554-451c-a6e0-d84193c54286",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Himalaya",
+    "description": "基于IMAP/SMTP的邮件管理CLI工具。使用`himalaya`可在终端中列出、阅读、撰写、回复、转发、搜索和组织邮件，支持多账户及MML（MIME元语言）邮件撰写。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装himalaya技能。`n`n若已安装，则直接安装himalaya技能。",
+    "download_cmd": "skillhub install himalaya",
+    "star": 50,
+    "download_count": 28982,
+    "skill_id": "cd19a7aa-c366-4807-aefb-c29548f8ee2e",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Video Frames",
+    "description": "使用 ffmpeg 提取视频帧或短片段。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装video-frames技能。`n`n若已安装，则直接安装video-frames技能。",
+    "download_cmd": "skillhub install video-frames",
+    "star": 79,
+    "download_count": 28802,
+    "skill_id": "8df73eb9-bdbd-446f-820e-9ca12936ffef",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Browser Use",
+    "description": "自动执行浏览器操作，支持网页测试、表单填写、截图及数据提取。适用于网站导航与交互场景。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装browser-use技能。`n`n若已安装，则直接安装browser-use技能。",
+    "download_cmd": "skillhub install browser-use",
+    "star": 65,
+    "download_count": 28528,
+    "skill_id": "30696f60-ef37-48f1-a0f6-abde2974edb9",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Evolver",
+    "description": "AI智能体自进化引擎，分析运行时历史识别改进并应用协议约束的进化。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装evolver技能。`n`n若已安装，则直接安装evolver技能。",
+    "download_cmd": "skillhub install evolver",
+    "star": 58,
+    "download_count": 27687,
+    "skill_id": "c822c0f7-0c23-4d1c-b5d1-276aebe31029",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "News Summary",
+    "description": "适用于用户询问新闻更新、每日简报或全球动态时。从可信国际RSS源获取新闻，支持生成语音摘要。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装news-summary技能。`n`n若已安装，则直接安装news-summary技能。",
+    "download_cmd": "skillhub install news-summary",
+    "star": 77,
+    "download_count": 27063,
+    "skill_id": "3d88fe7a-31f5-4407-8800-3afccb267177",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Agent Browser",
+    "description": "专为AI智能体优化的无头浏览器自动化CLI，支持无障碍树快照与引用式元素选择",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装agent-browser-clawdbot技能。`n`n若已安装，则直接安装agent-browser-clawdbot技能。",
+    "download_cmd": "skillhub install agent-browser-clawdbot",
+    "star": 66,
+    "download_count": 26508,
+    "skill_id": "8a5d91f7-2ff8-4d54-b540-0059990e89fd",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Model Usage",
+    "description": "使用 CodexBar CLI 本地成本数据汇总 Codex/Claude 各模型使用（含当前或完整细分）。在询问 CodexBar 模型级使用/成本数据，或需可脚本化各模型摘要时触发。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装model-usage技能。`n`n若已安装，则直接安装model-usage技能。",
+    "download_cmd": "skillhub install model-usage",
+    "star": 90,
+    "download_count": 26467,
+    "skill_id": "6fd94ba3-6186-494f-a68e-9c29deb4551f",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Trello",
+    "description": "通过 Trello REST API 管理看板、列表和卡片。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装trello技能。`n`n若已安装，则直接安装trello技能。",
+    "download_cmd": "skillhub install trello",
+    "star": 106,
+    "download_count": 26314,
+    "skill_id": "0d2dee7d-71ed-447c-8391-00f4e25ef335",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Blogwatcher",
+    "description": "使用 blogwatcher CLI 监控博客和 RSS/Atom 订阅源的更新。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装blogwatcher技能。`n`n若已安装，则直接安装blogwatcher技能。",
+    "download_cmd": "skillhub install blogwatcher",
+    "star": 46,
+    "download_count": 26109,
+    "skill_id": "9b1029d8-fd8d-4592-a2a2-6c874700a8dc",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Gmail",
+    "description": "Gmail API集成（托管OAuth），支持邮件、会话、标签及草稿的读取、发送与管理。用户需与Gmail交互时使用本技能。其他第三方应用请使用api-gateway技能(https://clawhub.ai/byungkyu/api-gateway)。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装gmail技能。`n`n若已安装，则直接安装gmail技能。",
+    "download_cmd": "skillhub install gmail",
+    "star": 60,
+    "download_count": 25827,
+    "skill_id": "980863d3-f1a6-4c17-b7e6-dc6ee8fd0ec1",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "imap-smtp-email",
+    "description": "通过IMAP/SMTP收发邮件，支持检查新邮件、获取内容、搜索邮箱、标记已读/未读及发送附件。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装imap-smtp-email技能。`n`n若已安装，则直接安装imap-smtp-email技能。",
+    "download_cmd": "skillhub install imap-smtp-email",
+    "star": 57,
+    "download_count": 25604,
+    "skill_id": "fc82d590-646a-4356-add2-7dc29d8a5d86",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Markdown Converter",
+    "description": "使用 markitdown 将 PDF、Word(.docx)、PowerPoint(.pptx)、Excel(.xlsx/.xls)、HTML、CSV、JSON、XML、图片(含EXIF/OCR)、音频(含转录)、ZIP压缩包、YouTube链接或EPub转换为Markdown格式，便于LLM处理或文本分析。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装markdown-converter技能。`n`n若已安装，则直接安装markdown-converter技能。",
+    "download_cmd": "skillhub install markdown-converter",
+    "star": 117,
+    "download_count": 25497,
+    "skill_id": "45056ae6-b969-4d64-9739-45048a663c37",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "AdMapix",
+    "description": "Ad creative search assistant. Results displayed via api.admapix.com. Triggers on keywords like: 找素材, 搜广告, 广告视频, 创意素材, 竞品广告, ad creative, search ads, find cre...",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装admapix技能。`n`n若已安装，则直接安装admapix技能。",
+    "download_cmd": "skillhub install admapix",
+    "star": 96,
+    "download_count": 25012,
+    "skill_id": "629e5b6a-db79-4a7f-a0b0-0cf74ef714dc",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Playwright MCP",
+    "description": "通过Playwright MCP服务器实现浏览器自动化，支持网页导航、元素点击、表单填写、数据提取、截图及完整工作流执行。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装playwright-mcp技能。`n`n若已安装，则直接安装playwright-mcp技能。",
+    "download_cmd": "skillhub install playwright-mcp",
+    "star": 88,
+    "download_count": 24528,
+    "skill_id": "31ffc5ce-7859-414f-b024-351dbfcce6f1",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Gemini",
+    "description": "Gemini CLI，支持一次性问答、摘要与生成。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装gemini技能。`n`n若已安装，则直接安装gemini技能。",
+    "download_cmd": "skillhub install gemini",
+    "star": 44,
+    "download_count": 24343,
+    "skill_id": "dd4ce647-4efc-4ab8-8862-e2dd491868f3",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "YouTube",
+    "description": "YouTube Data API集成（托管OAuth）。支持视频搜索、播放列表管理、频道数据访问及评论互动。用于YouTube交互场景，其他第三方应用请使用api-gateway技能(https://clawhub.ai/byungkyu/api-gateway)。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装youtube-api-skill技能。`n`n若已安装，则直接安装youtube-api-skill技能。",
+    "download_cmd": "skillhub install youtube-api-skill",
+    "star": 117,
+    "download_count": 23913,
+    "skill_id": "dd3c0bac-7bfd-4703-b923-5f18145caaf7",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Browser Automation",
+    "description": "通过自然语言CLI命令自动化浏览器交互。适用于浏览网站、页面导航、数据提取、截图、表单填写、按钮点击及网页应用操作。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装browser-automation技能。`n`n若已安装，则直接安装browser-automation技能。",
+    "download_cmd": "skillhub install browser-automation",
+    "star": 34,
+    "download_count": 23862,
+    "skill_id": "2546b3f6-f4c3-4fd7-a20f-72b15752c6fb",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Tavily AI Search",
+    "description": "基于Tavily Search API的AI优化搜索。适用于综合研究、时事查询、领域搜索及AI摘要生成。针对LLM优化，提供结构化结果与原始内容提取。适合研究、新闻、事实核查及权威资料收集。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装tavily技能。`n`n若已安装，则直接安装tavily技能。",
+    "download_cmd": "skillhub install tavily",
+    "star": 26,
+    "download_count": 23577,
+    "skill_id": "87487672-c886-4801-b99b-db2e2af69d28",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Feishu Evolver Wrapper",
+    "description": "飞书集成的能力进化器封装。管理进化循环生命周期（启动/停止/保活），发送飞书富文本卡片报告，并提供...",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装feishu-evolver-wrapper技能。`n`n若已安装，则直接安装feishu-evolver-wrapper技能。",
+    "download_cmd": "skillhub install feishu-evolver-wrapper",
+    "star": 4,
+    "download_count": 22502,
+    "skill_id": "f402a2cc-d661-42ad-9e7e-049402812416",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Stock Market Pro",
+    "description": "Yahoo Finance股票分析：实时行情、基本面、ASCII趋势、高清技术图表（RSI/MACD/布林带/VWAP/ATR），可选网络搜索",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装stock-market-pro技能。`n`n若已安装，则直接安装stock-market-pro技能。",
+    "download_cmd": "skillhub install stock-market-pro",
+    "star": 131,
+    "download_count": 22484,
+    "skill_id": "f6bedcc7-ebcb-4e63-9229-56d7e4809aec",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Capability Evolver",
+    "description": "AI智能体自进化引擎，分析运行时历史识别改进并应用协议约束进化。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装capability-evolver技能。`n`n若已安装，则直接安装capability-evolver技能。",
+    "download_cmd": "skillhub install capability-evolver",
+    "star": 66,
+    "download_count": 22417,
+    "skill_id": "7b7b168c-2e9d-4fb2-b783-c9e18c5e3efb",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "SuperDesign",
+    "description": "专业前端设计指南，打造精美现代UI，适用于落地页、仪表盘及任意用户界面。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装superdesign技能。`n`n若已安装，则直接安装superdesign技能。",
+    "download_cmd": "skillhub install superdesign",
+    "star": 119,
+    "download_count": 22232,
+    "skill_id": "149c3d4e-d45d-41c2-974d-621e62859c0c",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Pdf",
+    "description": "PDF综合处理工具，支持文本表格提取、创建、合并拆分及表单处理。适用于Claude填写PDF表单或批量处理、生成、分析PDF文档。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装pdf技能。`n`n若已安装，则直接安装pdf技能。",
+    "download_cmd": "skillhub install pdf",
+    "star": 30,
+    "download_count": 22101,
+    "skill_id": "785e8da4-cf1e-4fa2-91ee-f6ec7a1e56a3",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Memory Setup",
+    "description": "启用并配置 Moltbot/Clawdbot 记忆搜索以实现持久化上下文。用于设置记忆、解决\"金鱼脑\"问题或配置 memorySearch 参数。涵盖 MEMORY.md、日常日志和向量搜索设置。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装memory-setup技能。`n`n若已安装，则直接安装memory-setup技能。",
+    "download_cmd": "skillhub install memory-setup",
+    "star": 83,
+    "download_count": 22021,
+    "skill_id": "b4f83666-6123-4e83-b31e-2395516daeea",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Qmd",
+    "description": "本地搜索/索引CLI（BM25+向量+重排序），支持MCP模式",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装qmd技能。`n`n若已安装，则直接安装qmd技能。",
+    "download_cmd": "skillhub install qmd",
+    "star": 75,
+    "download_count": 21941,
+    "skill_id": "c17f4e4e-ee52-404b-b5bd-010b2398a834",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Word / DOCX",
+    "description": "创建、检查和编辑 Word/DOCX 文档，支持样式、编号、修订追踪、表格、分节及兼容性检查。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装word-docx技能。`n`n若已安装，则直接安装word-docx技能。",
+    "download_cmd": "skillhub install word-docx",
+    "star": 67,
+    "download_count": 21919,
+    "skill_id": "a891ea9f-2e1a-4194-9b63-480969122bfa",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Discord",
+    "description": "通过 Clawdbot 的 discord 工具控制 Discord，支持发送消息、添加反应、上传贴纸/表情、发起投票、管理话题/置顶/搜索、查询权限及成员/角色/频道信息，以及在私信或频道中执行管理操作。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装discord技能。`n`n若已安装，则直接安装discord技能。",
+    "download_cmd": "skillhub install discord",
+    "star": 48,
+    "download_count": 21760,
+    "skill_id": "d2fbefba-4916-4466-bb1e-07c4fe529693",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Web Search by Exa",
+    "description": "通过Exa MCP服务器进行神经网页搜索、内容提取、公司与人物调研、代码搜索及深度研究",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装web-search-exa技能。`n`n若已安装，则直接安装web-search-exa技能。",
+    "download_cmd": "skillhub install web-search-exa",
+    "star": 23,
+    "download_count": 21414,
+    "skill_id": "952ff714-3b62-4d9f-86af-02d3b5609c3a",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Clawdhub",
+    "description": "通过 npm 安装的 ClawdHub CLI，用于在 clawdhub.com 搜索、安装、更新和发布 Agent 技能。支持即时获取新技能、将已安装技能同步至最新或特定版本，以及发布新/更新的技能文件夹。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装clawdhub技能。`n`n若已安装，则直接安装clawdhub技能。",
+    "download_cmd": "skillhub install clawdhub",
+    "star": 180,
+    "download_count": 21406,
+    "skill_id": "4b0bd08f-e658-49ba-9e32-dc8ff12d1c39",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Apple Notes",
+    "description": "通过 macOS 的 `memo` CLI 管理 Apple 备忘录（创建、查看、编辑、删除、搜索、移动、导出）。当用户要求添加、列出、搜索备忘录或管理文件夹时使用。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装apple-notes技能。`n`n若已安装，则直接安装apple-notes技能。",
+    "download_cmd": "skillhub install apple-notes",
+    "star": 41,
+    "download_count": 21405,
+    "skill_id": "70505d96-cdf3-49ef-a698-b959ea69e9e9",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "LNBits Wallet wtih QR Code",
+    "description": "管理 LNbits 闪电钱包（余额、支付、收款）",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装lnbits-with-qrcode技能。`n`n若已安装，则直接安装lnbits-with-qrcode技能。",
+    "download_cmd": "skillhub install lnbits-with-qrcode",
+    "star": 6,
+    "download_count": 20825,
+    "skill_id": "ccb01f45-dc71-4fa4-99da-15c050929e68",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Docker Essentials",
+    "description": "Docker 核心命令与工作流：容器管理、镜像操作及调试。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装docker-essentials技能。`n`n若已安装，则直接安装docker-essentials技能。",
+    "download_cmd": "skillhub install docker-essentials",
+    "star": 21,
+    "download_count": 20790,
+    "skill_id": "621784ba-2cd4-4b8b-8e6e-9c5bf3298404",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Caldav Calendar",
+    "description": "使用 vdirsyncer + khal 同步查询 CalDAV 日历（iCloud、Google、Fastmail、Nextcloud 等）。支持 Linux。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装caldav-calendar技能。`n`n若已安装，则直接安装caldav-calendar技能。",
+    "download_cmd": "skillhub install caldav-calendar",
+    "star": 173,
+    "download_count": 20753,
+    "skill_id": "9fb6f100-a76f-4203-8e5b-87b550e796a2",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Web Search",
+    "description": "用于搜索网络信息、新闻、图片及视频，通过DuckDuckGo API返回格式化结果（文本/Markdown/JSON）。适用于研究、事实核查和获取最新资讯。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装web-search技能。`n`n若已安装，则直接安装web-search技能。",
+    "download_cmd": "skillhub install web-search",
+    "star": 23,
+    "download_count": 20590,
+    "skill_id": "21af8b61-acf5-42bd-a318-9e8f444ed7a7",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Outlook",
+    "description": "Microsoft Outlook API集成，支持托管OAuth。通过Microsoft Graph管理邮件、文件夹、日历和联系人。适用于Outlook交互场景，其他第三方应用请使用api-gateway技能。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装outlook-api技能。`n`n若已安装，则直接安装outlook-api技能。",
+    "download_cmd": "skillhub install outlook-api",
+    "star": 30,
+    "download_count": 20139,
+    "skill_id": "5f9234a1-37dd-4255-ac59-a9840f21621e",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Session-logs",
+    "description": "使用jq搜索并分析你的历史会话日志（过往/父级对话）。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装session-logs技能。`n`n若已安装，则直接安装session-logs技能。",
+    "download_cmd": "skillhub install session-logs",
+    "star": 15,
+    "download_count": 19920,
+    "skill_id": "afd967c9-09c6-47b3-ad1d-9cb41f628198",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "WhatsApp Business",
+    "description": "WhatsApp Business API集成（托管OAuth），支持发送消息、管理模板及对话处理。适用于WhatsApp Business交互场景，其他第三方应用请使用api-gateway技能(https://clawhub.ai/byungkyu/api-gateway)。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装whatsapp-business技能。`n`n若已安装，则直接安装whatsapp-business技能。",
+    "download_cmd": "skillhub install whatsapp-business",
+    "star": 46,
+    "download_count": 19684,
+    "skill_id": "169d1586-ac26-4b1a-9c42-8409c25b478f",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "AgentMail",
+    "description": "面向AI智能体的API优先邮件平台。创建和管理专用邮箱，以编程方式收发邮件，通过Webhook和实时事件处理邮件工作流。适用于为智能体设置邮件身份、发送邮件、处理收件工作流，或替代Gmail等传统邮件服务商。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装agentmail技能。`n`n若已安装，则直接安装agentmail技能。",
+    "download_cmd": "skillhub install agentmail",
+    "star": 45,
+    "download_count": 19470,
+    "skill_id": "0f4ac943-3031-4712-b1ff-6ed9eac02cea",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Stock Watcher",
+    "description": "管理和监控个人股票自选，支持增删、列示股票及基于同花顺数据汇总近期表现。适用于追踪个股、查看行情或管理自选列表。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装stock-watcher技能。`n`n若已安装，则直接安装stock-watcher技能。",
+    "download_cmd": "skillhub install stock-watcher",
+    "star": 60,
+    "download_count": 19408,
+    "skill_id": "2af02d34-a286-4ab1-9cc5-217acfd049d5",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Stripe",
+    "description": "Stripe API集成，支持托管OAuth。管理客户、订阅、发票、产品、定价和支付。用于处理Stripe支付、账单及订阅。其他第三方应用请使用api-gateway技能（https://clawhub.ai/byungkyu/api-gateway）。需网络访问及有效Maton API密钥。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装stripe-api技能。`n`n若已安装，则直接安装stripe-api技能。",
+    "download_cmd": "skillhub install stripe-api",
+    "star": 24,
+    "download_count": 19367,
+    "skill_id": "33126c31-b2d4-4c05-8ec6-4743117f7572",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Deep Research Pro",
+    "description": "多源深度研究智能体，自动搜索网络、整合分析并生成引用报告，无需API密钥。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装deep-research-pro技能。`n`n若已安装，则直接安装deep-research-pro技能。",
+    "download_cmd": "skillhub install deep-research-pro",
+    "star": 45,
+    "download_count": 19145,
+    "skill_id": "a9fb9014-0821-48f3-be32-49b5ee19077c",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "n8n workflow automation",
+    "description": "设计并输出含可靠触发、幂等性、错误处理、日志、重试及人工审核队列的 n8n 工作流 JSON。适用于需审计且防静默失败的自动化场景。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装n8n-workflow-automation技能。`n`n若已安装，则直接安装n8n-workflow-automation技能。",
+    "download_cmd": "skillhub install n8n-workflow-automation",
+    "star": 89,
+    "download_count": 19116,
+    "skill_id": "698d123f-6eb7-4bad-b84d-e9c58129dacf",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Performs web searches using DuckDuckGo to retrieve real-time information from the internet. Use when the user needs to search for current events, documentation, tutorials, or any information that requires web search capabilities.",
+    "description": "使用DuckDuckGo进行网络搜索，获取实时互联网信息。适用于查询时事、文档、教程或任何需网络检索的内容。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装duckduckgo-search技能。`n`n若已安装，则直接安装duckduckgo-search技能。",
+    "download_cmd": "skillhub install duckduckgo-search",
+    "star": 36,
+    "download_count": 19019,
+    "skill_id": "5d9b0987-36b5-4a90-9f96-2e27e23b1e00",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Marketing Mode",
+    "description": "整合23项营销技能，涵盖策略、心理学、内容、SEO、转化优化及付费增长。适用于营销策略、文案撰写、SEO、转化优化、付费广告等各类营销需求。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装marketing-mode技能。`n`n若已安装，则直接安装marketing-mode技能。",
+    "download_cmd": "skillhub install marketing-mode",
+    "star": 116,
+    "download_count": 18996,
+    "skill_id": "b469e9f1-c211-4b2b-9c9f-f0fdb671f036",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Markdown.new Skill",
+    "description": "使用 markdown.new 将公开网页转换为干净的 Markdown，供 AI 工作流（如摘要、RAG）使用。适用于需要 URL 转 Markdown 的场景。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装markdown-convert技能。`n`n若已安装，则直接安装markdown-convert技能。",
+    "download_cmd": "skillhub install markdown-convert",
+    "star": 39,
+    "download_count": 18621,
+    "skill_id": "152a7132-b1e8-41b6-b8d1-3751a2321219",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Excel / XLSX",
+    "description": "创建、查看和编辑 Microsoft Excel 工作簿及 XLSX 文件，支持公式、日期、类型、格式、重新计算和模板保留。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装excel-xlsx技能。`n`n若已安装，则直接安装excel-xlsx技能。",
+    "download_cmd": "skillhub install excel-xlsx",
+    "star": 45,
+    "download_count": 18425,
+    "skill_id": "50ed78f3-d90b-4b74-a378-babf0efa681b",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Playwright Scraper Skill",
+    "description": "基于 Playwright 的网页抓取技能，具备反爬虫保护，成功应用于 Discuss.com.hk 等复杂网站。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装playwright-scraper-skill技能。`n`n若已安装，则直接安装playwright-scraper-skill技能。",
+    "download_cmd": "skillhub install playwright-scraper-skill",
+    "star": 38,
+    "download_count": 18395,
+    "skill_id": "a170cee7-fd5a-482a-8729-39c3f81dd938",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Peekaboo",
+    "description": "使用 Peekaboo CLI 捕获和自动化 macOS 界面",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装peekaboo技能。`n`n若已安装，则直接安装peekaboo技能。",
+    "download_cmd": "skillhub install peekaboo",
+    "star": 51,
+    "download_count": 18347,
+    "skill_id": "f61c6c3f-6376-48ab-8753-fec4d87388de",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Ai Ppt Generator",
+    "description": "使用百度AI生成PPT，根据内容智能选择模板。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装ai-ppt-generator技能。`n`n若已安装，则直接安装ai-ppt-generator技能。",
+    "download_cmd": "skillhub install ai-ppt-generator",
+    "star": 30,
+    "download_count": 18336,
+    "skill_id": "fea915a7-1cc2-482c-a445-36e62ec83b68",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Shopify",
+    "description": "Shopify 集成维护中，请联系 founders@maton.ai。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装shopify技能。`n`n若已安装，则直接安装shopify技能。",
+    "download_cmd": "skillhub install shopify",
+    "star": 5,
+    "download_count": 18307,
+    "skill_id": "19765113-0f64-46d1-a9e3-0dd927c03a77",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "x-twitter",
+    "description": "与 Twitter/X 互动，可阅读、搜索、发布、点赞、转发推文及管理时间线。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装x-twitter技能。`n`n若已安装，则直接安装x-twitter技能。",
+    "download_cmd": "skillhub install x-twitter",
+    "star": 41,
+    "download_count": 18293,
+    "skill_id": "3c219fe6-146e-448f-818b-950f68f59b99",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Apple Reminders",
+    "description": "通过 macOS 的 `remindctl` CLI 管理 Apple 提醒事项（列出、添加、编辑、完成、删除），支持多列表、日期筛选及 JSON/纯文本输出。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装apple-reminders技能。`n`n若已安装，则直接安装apple-reminders技能。",
+    "download_cmd": "skillhub install apple-reminders",
+    "star": 41,
+    "download_count": 18293,
+    "skill_id": "f1dd3841-3bbf-4134-b8c3-c5900fa1f3cb",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "UI/UX Pro Max",
+    "description": "UI/UX设计智能与实现指导，用于构建精致界面。适用于UI设计、UX流程、信息架构、视觉风格、设计系统/令牌、组件规范、文案/微文案、无障碍设计，或生成/评审/优化前端界面（HTML/CSS/JS、React、Next.js、Vue、Svelte、Tailwind）。包含四大工作流：(1)生成新UI布局与样式，(2)优化现有UI/UX，(3)输出设计系统令牌与组件规范，(4)将UX建议转化为具体代码变更。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装ui-ux-pro-max技能。`n`n若已安装，则直接安装ui-ux-pro-max技能。",
+    "download_cmd": "skillhub install ui-ux-pro-max",
+    "star": 87,
+    "download_count": 18287,
+    "skill_id": "e82fd9b4-09d0-48d5-8783-aed2233fd436",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Data Analyst",
+    "description": "数据可视化、报表生成、SQL查询及表格自动化。将AI代理转变为数据分析师，把原始数据转化为可行洞察。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装data-analyst技能。`n`n若已安装，则直接安装data-analyst技能。",
+    "download_cmd": "skillhub install data-analyst",
+    "star": 51,
+    "download_count": 18264,
+    "skill_id": "2132551f-9519-4ec8-b6e5-bf2c887d957b",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Git Essentials",
+    "description": "Git 基础命令与工作流，涵盖版本控制、分支管理与协作。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装git-essentials技能。`n`n若已安装，则直接安装git-essentials技能。",
+    "download_cmd": "skillhub install git-essentials",
+    "star": 23,
+    "download_count": 18261,
+    "skill_id": "17d6b5c6-1978-4c24-bcc8-6814363eca59",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Sag",
+    "description": "ElevenLabs文本转语音，Mac风格say命令体验",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装sag技能。`n`n若已安装，则直接安装sag技能。",
+    "download_cmd": "skillhub install sag",
+    "star": 19,
+    "download_count": 18098,
+    "skill_id": "92db192c-1d8f-4ad6-9365-1e9c92966a6f",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Exa Web Search (Free)",
+    "description": "免费AI搜索(Exa MCP)。支持网页搜索新闻资讯、代码搜索GitHub/StackOverflow文档示例、企业调研商业情报。无需API密钥。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装exa-web-search-free技能。`n`n若已安装，则直接安装exa-web-search-free技能。",
+    "download_cmd": "skillhub install exa-web-search-free",
+    "star": 57,
+    "download_count": 18002,
+    "skill_id": "93740e8e-98a3-4c73-a3d3-22d471161616",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Xero",
+    "description": "Xero API集成（托管OAuth），管理联系人、发票、付款、账户及财务报表。用于Xero会计数据操作，其他第三方应用请使用api-gateway技能。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装xero技能。`n`n若已安装，则直接安装xero技能。",
+    "download_cmd": "skillhub install xero",
+    "star": 10,
+    "download_count": 17951,
+    "skill_id": "714c76f6-9f4b-4ff3-8e9a-86bd9703b062",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Microsoft Excel",
+    "description": "托管OAuth的Microsoft Excel API集成，支持读写OneDrive中的Excel工作簿、工作表、区域、表格及图表。当用户需要读取或修改Excel表格、管理工作表数据、处理表格或访问单元格值时使用。其他第三方应用请使用api-gateway技能(https://clawhub.ai/byungkyu/api-gateway)。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装microsoft-excel技能。`n`n若已安装，则直接安装microsoft-excel技能。",
+    "download_cmd": "skillhub install microsoft-excel",
+    "star": 36,
+    "download_count": 17945,
+    "skill_id": "71d3f8b0-3b52-4af9-bc50-b2e68319f279",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Google Slides",
+    "description": "集成Google Slides API，支持托管OAuth认证。可创建演示文稿、添加幻灯片、插入内容并管理格式。适用于操作Google Slides的场景，其他第三方应用请使用api-gateway技能（https://clawhub.ai/byungkyu/api-gateway）。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装google-slides技能。`n`n若已安装，则直接安装google-slides技能。",
+    "download_cmd": "skillhub install google-slides",
+    "star": 33,
+    "download_count": 17907,
+    "skill_id": "e59c0f07-e5c8-469b-837a-b1546b6cb631",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  },
+  {
+    "name": "Typeform",
+    "description": "Typeform API集成，支持托管OAuth。可创建表单、管理回复及获取洞察。适用于与Typeform调查及回复交互的场景。其他第三方应用请使用api-gateway技能（https://clawhub.ai/byungkyu/api-gateway）。",
+    "download_prompt": "请先检查是否已安装 SkillHub 商店，若未安装，请根据 https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/skillhub.md 安装Skillhub商店，然后安装typeform技能。`n`n若已安装，则直接安装typeform技能。",
+    "download_cmd": "skillhub install typeform",
+    "star": 6,
+    "download_count": 17698,
+    "skill_id": "7eb5b750-6577-42f2-ae79-196a178e3eff",
+    "add_time": "2026-03-22T11:05:28.547562Z"
+  }
+]

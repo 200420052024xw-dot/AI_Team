@@ -1,0 +1,28 @@
+# Environment
+.env
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# IDE
+.idea/
+.vscode/
+.claude/
+
+# Data (local only)
+data/chromadb/
+# skills.json should be committed - it's the skill data
+# data/skills.json
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,20 @@
+# FastAPI 核心
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic==2.5.3
+pydantic-settings==2.1.0
+
+# 向量数据库
+chromadb==0.4.22
+
+# Embedding模型
+sentence-transformers==2.3.1
+torch==2.1.2
+
+# LLM集成
+anthropic==0.18.1
+
+# 工具库
+python-dotenv==1.0.0
+python-multipart==0.0.6
+numpy==1.26.3
